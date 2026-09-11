@@ -8,6 +8,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="style.css"/>
+  <style>
+    label.error{color:#e53935;font-size:.74rem;display:block;margin-top:3px;flex:1 1 100%;}
+    input.error,select.error{border-color:#e53935!important;}
+    input.valid,select.valid{border-color:#2e7d32!important;}
+  </style>
+  <style>
+    .error { color:#e53935; font-size:.74rem; display:block; margin-top:3px; flex:1 1 100%; }
+    input.error, select.error { border-color:#e53935 !important; }
+    input.valid, select.valid { border-color:#2e7d32 !important; }
+  </style>
 </head>
 <body>
 
@@ -148,27 +158,108 @@
 <section class="sec ba-sec" id="gallery">
   <div class="container">
     <div class="sec-head">
-      <h2>Real Smiles. Real Transformations.</h2>
-      <p>See the difference a confident smile can make.</p>
+      <p class="label-gold">— PATIENT STORIES —</p>
+      <h2>Real Smiles. Real <span class="gold">Transformations.</span></h2>
+      <p>See the difference our treatments make — real patients, real results.</p>
     </div>
-    <div class="ba-row">
-      <button class="circle-btn" id="baPrev"><i class="fa-solid fa-chevron-left"></i></button>
-      <div class="ba-frame">
-        <div class="ba-wrap" id="baWrap">
-          <!-- Before: stained/yellow teeth -->
-          <img class="ba-base" src="https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?w=800&q=80" alt="Before"/>
-          <!-- After: white bright teeth -->
-          <div class="ba-clip" id="baClip">
-            <img src="https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?w=800&q=80" alt="After" style="filter:brightness(1.18) saturate(.3) contrast(1.1);"/>
-          </div>
-          <div class="ba-line" id="baLine">
-            <div class="ba-knob"><i class="fa-solid fa-arrows-left-right"></i></div>
-          </div>
+    <div class="ba-grid">
+
+      <!-- Teeth Whitening -->
+      <div class="ba-card">
+        <div class="ba-slider">
+          <img class="ba-img-before" src="https://images.pexels.com/photos/3762453/pexels-photo-3762453.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Before"/>
+          <div class="ba-after-clip"><img class="ba-img-after" src="https://images.pexels.com/photos/3762456/pexels-photo-3762456.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="After"/></div>
+          <div class="ba-handle"><span>&lt;&nbsp;&gt;</span></div>
+          <div class="ba-line"></div>
           <span class="ba-lbl ba-lbl-l">Before</span>
           <span class="ba-lbl ba-lbl-r">After</span>
         </div>
+        <div class="ba-info">
+          <div class="ba-icon"><i class="fa-solid fa-tooth"></i></div>
+          <div><strong>Teeth Whitening</strong><p>Brighter smiles in just a few sessions.</p></div>
+        </div>
       </div>
-      <button class="circle-btn" id="baNext"><i class="fa-solid fa-chevron-right"></i></button>
+
+      <!-- Braces / Alignment -->
+      <div class="ba-card">
+        <div class="ba-slider">
+          <img class="ba-img-before" src="https://images.pexels.com/photos/6502308/pexels-photo-6502308.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Before"/>
+          <div class="ba-after-clip"><img class="ba-img-after" src="https://images.pexels.com/photos/3762456/pexels-photo-3762456.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="After"/></div>
+          <div class="ba-handle"><span>&lt;&nbsp;&gt;</span></div>
+          <div class="ba-line"></div>
+          <span class="ba-lbl ba-lbl-l">Before</span>
+          <span class="ba-lbl ba-lbl-r">After</span>
+        </div>
+        <div class="ba-info">
+          <div class="ba-icon"><i class="fa-solid fa-teeth"></i></div>
+          <div><strong>Braces / Alignment</strong><p>Straighter teeth, a more confident you.</p></div>
+        </div>
+      </div>
+
+      <!-- Dental Implants -->
+      <div class="ba-card">
+        <div class="ba-slider">
+          <img class="ba-img-before" src="https://images.pexels.com/photos/6502307/pexels-photo-6502307.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Before"/>
+          <div class="ba-after-clip"><img class="ba-img-after" src="https://images.pexels.com/photos/3762456/pexels-photo-3762456.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="After"/></div>
+          <div class="ba-handle"><span>&lt;&nbsp;&gt;</span></div>
+          <div class="ba-line"></div>
+          <span class="ba-lbl ba-lbl-l">Before</span>
+          <span class="ba-lbl ba-lbl-r">After</span>
+        </div>
+        <div class="ba-info">
+          <div class="ba-icon"><i class="fa-solid fa-syringe"></i></div>
+          <div><strong>Dental Implants</strong><p>Restore your smile, restore your confidence.</p></div>
+        </div>
+      </div>
+
+      <!-- Veneers -->
+      <div class="ba-card">
+        <div class="ba-slider">
+          <img class="ba-img-before" src="https://images.pexels.com/photos/3762453/pexels-photo-3762453.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Before"/>
+          <div class="ba-after-clip"><img class="ba-img-after" src="https://images.pexels.com/photos/3762456/pexels-photo-3762456.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="After"/></div>
+          <div class="ba-handle"><span>&lt;&nbsp;&gt;</span></div>
+          <div class="ba-line"></div>
+          <span class="ba-lbl ba-lbl-l">Before</span>
+          <span class="ba-lbl ba-lbl-r">After</span>
+        </div>
+        <div class="ba-info">
+          <div class="ba-icon"><i class="fa-solid fa-star"></i></div>
+          <div><strong>Veneers</strong><p>Perfect shape, perfect colour, perfect smile.</p></div>
+        </div>
+      </div>
+
+      <!-- Gum Treatment -->
+      <div class="ba-card">
+        <div class="ba-slider">
+          <img class="ba-img-before" src="https://images.pexels.com/photos/6502308/pexels-photo-6502308.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Before"/>
+          <div class="ba-after-clip"><img class="ba-img-after" src="https://images.pexels.com/photos/3762453/pexels-photo-3762453.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="After"/></div>
+          <div class="ba-handle"><span>&lt;&nbsp;&gt;</span></div>
+          <div class="ba-line"></div>
+          <span class="ba-lbl ba-lbl-l">Before</span>
+          <span class="ba-lbl ba-lbl-r">After</span>
+        </div>
+        <div class="ba-info">
+          <div class="ba-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+          <div><strong>Gum Treatment</strong><p>Healthy gums, healthier you.</p></div>
+        </div>
+      </div>
+
+      <!-- Smile Makeover -->
+      <div class="ba-card">
+        <div class="ba-slider">
+          <img class="ba-img-before" src="https://images.pexels.com/photos/6502307/pexels-photo-6502307.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Before"/>
+          <div class="ba-after-clip"><img class="ba-img-after" src="https://images.pexels.com/photos/3762456/pexels-photo-3762456.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="After"/></div>
+          <div class="ba-handle"><span>&lt;&nbsp;&gt;</span></div>
+          <div class="ba-line"></div>
+          <span class="ba-lbl ba-lbl-l">Before</span>
+          <span class="ba-lbl ba-lbl-r">After</span>
+        </div>
+        <div class="ba-info">
+          <div class="ba-icon"><i class="fa-regular fa-face-smile"></i></div>
+          <div><strong>Smile Makeover</strong><p>Complete transformation, total confidence.</p></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -199,7 +290,7 @@
 <section class="appt-sec" id="appointment">
   <!-- ONE background image fills entire section -->
   <div class="appt-bg">
-    <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=1600&q=85" alt="Happy family"/>
+    <img src="https://images.pexels.com/photos/1128318/pexels-photo-1128318.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop" alt="Happy family"/>
   </div>
   <div class="leaf-deco leaf-tl"></div>
   <div class="leaf-deco leaf-br"></div>
@@ -207,20 +298,24 @@
   <div class="appt-left">
     <p class="appt-eyebrow">Ready For A Healthier Smile?</p>
     <h2 class="appt-title">Book Your Appointment <span class="gold">Today</span></h2>
-    <form class="appt-form"
-      hx-post="partials/book.php"
-      hx-target="#apptMsg"
-      hx-swap="innerHTML"
-      hx-indicator="#apptSpin">
+    <form class="appt-form" id="apptForm" action="partials/book.php" method="POST" novalidate>
       <div class="appt-fields">
-        <input type="text" name="name"  placeholder="Your Name"   required/>
-        <input type="tel"  name="phone" placeholder="Phone Number" required/>
-        <input type="date" name="date"                             required/>
-        <button type="submit" class="btn-primary">Book Now <i class="fa-solid fa-arrow-right"></i></button>
+        <input type="text" id="apptName" name="name" placeholder="Your Name" required/>
+        <input type="tel" id="apptPhone" name="phone" placeholder="Phone Number" maxlength="10" required/>
+        <input type="date" id="apptDate" name="date" required/>
+        <select id="apptTreatment" name="treatment" required>
+          <option value="" disabled selected>Select Treatment</option>
+          <option>Teeth Whitening</option>
+          <option>Braces / Alignment</option>
+          <option>Dental Implants</option>
+          <option>Veneers</option>
+          <option>Gum Treatment</option>
+          <option>Smile Makeover</option>
+          <option>General Consultation</option>
+        </select>
+        <button type="submit" class="btn-primary" id="bookBtn">Book Now <i class="fa-solid fa-arrow-right"></i></button>
       </div>
     </form>
-    <span id="apptSpin" class="htmx-indicator"><i class="fa-solid fa-spinner fa-spin"></i></span>
-    <div id="apptMsg" class="appt-msg"></div>
     <div class="appt-perks">
       <span><i class="fa-solid fa-bolt"></i> Quick Appointment</span>
       <span><i class="fa-regular fa-clock"></i> Flexible Timings</span>
@@ -283,6 +378,15 @@
   </div>
 </footer>
 
+<!-- LOADER OVERLAY -->
+<div id="bookLoader" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;flex-direction:column;align-items:center;justify-content:center;gap:16px">
+  <div style="width:54px;height:54px;border:4px solid rgba(255,255,255,.2);border-top-color:#b8860b;border-radius:50%;animation:spin .8s linear infinite"></div>
+  <p style="color:#fff;font-family:'Inter',sans-serif;font-size:.95rem;letter-spacing:.5px">Booking your appointment…</p>
+</div>
+<style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.20.0/dist/jquery.validate.min.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
