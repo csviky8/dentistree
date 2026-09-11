@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>4S Dentistree – Smile • Care • Confidence • For Life</title>
+  <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a class="logo" href="#home">
+      <img src="https://img.icons8.com/color/48/tooth.png" alt="logo"/>
+      <div>
+        <span class="logo-name">4S Dentistree</span>
+        <span class="logo-sub">Smile • Care • Confidence • For Life</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Treatments</a></li>
+      <li><a href="#doctors">Our Doctors</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#appointment" class="btn-book">Book Appointment</a>
+      <span class="nav-phone"><i class="fa-solid fa-phone"></i> +91 98765 43210</span>
+    </div>
+    <button class="nav-burger" id="navBurger"><i class="fa-solid fa-bars"></i></button>
+  </div>
+  <div class="nav-drawer" id="navDrawer">
+    <a href="#home">Home</a><a href="#about">About</a>
+    <a href="#services">Treatments</a><a href="#doctors">Our Doctors</a>
+    <a href="#gallery">Gallery</a><a href="#contact">Contact</a>
+    <a href="#appointment" class="btn-book">Book Appointment</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+  <!-- Two-column main area -->
+  <div class="hero-main">
+
+    <!-- LEFT col: white bg, text -->
+    <div class="hero-left">
+      <p class="hero-eyebrow">— EXPERT DENTAL CARE IN CHENNAI —</p>
+      <h1>A Healthier<br><span class="gold">Brighter Smile</span><br>For A Happier You</h1>
+      <p class="hero-desc">Advanced Dental Care with a Personal Touch<br>at 4S Dentistree.</p>
+      <div class="hero-btns">
+        <a href="#appointment" class="btn-primary">Book Appointment <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#" class="btn-ghost"><span class="play-btn"><i class="fa-solid fa-play"></i></span> Watch Our Story</a>
+      </div>
+    </div>
+
+    <!-- RIGHT col: photo + overlays -->
+    <div class="hero-right">
+      <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=900&q=85" alt="Smiling woman"/>
+
+      <!-- Script text over photo -->
+      <div class="hero-script">Smile<br>Confidently<br>Always</div>
+
+      <!-- Badge: right-center of photo -->
+      <div class="hero-badge">
+        <div class="badge-icon"><i class="fa-solid fa-tooth"></i></div>
+        <div>Your Smile<br><strong>Our Priority</strong></div>
+      </div>
+
+      <!-- Scroll Down: bottom-right of photo -->
+      <a href="#services" class="hero-scroll">
+        <i class="fa-regular fa-circle-play"></i> Scroll Down
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Stats bar: full width below -->
+  <div class="hero-stats">
+    <div class="stat"><i class="fa-solid fa-users"></i><div><strong>5000+</strong><span>Happy Patients</span></div></div>
+    <div class="stat-sep"></div>
+    <div class="stat"><i class="fa-solid fa-shield-halved"></i><div><strong>15+</strong><span>Years of Expertise</span></div></div>
+    <div class="stat-sep"></div>
+    <div class="stat"><i class="fa-solid fa-gears"></i><div><strong>Advanced</strong><span>Technology</span></div></div>
+    <div class="stat-sep"></div>
+    <div class="stat"><i class="fa-solid fa-user-doctor"></i><div><strong>Personalized</strong><span>Treatment</span></div></div>
+  </div>
+
+</section>
+
+<!-- SERVICES -->
+<section class="sec services-sec" id="services">
+  <div class="leaf-deco leaf-tl"></div>
+  <div class="leaf-deco leaf-br"></div>
+  <div class="container">
+    <div class="sec-head">
+      <h2>Comprehensive <span class="gold">Dental Care</span><br>All Under One Roof</h2>
+      <p>From routine check-ups to advanced treatments, we provide complete dental solutions for you and your family.</p>
+    </div>
+    <div class="svc-grid" id="svcGrid"
+      hx-get="partials/services.html"
+      hx-trigger="intersect once"
+      hx-swap="innerHTML">
+      <div class="loader"><i class="fa-solid fa-spinner fa-spin"></i></div>
+    </div>
+  </div>
+  <div class="tooth-watermark"><img src="https://img.icons8.com/color/120/tooth.png" alt=""/></div>
+</section>
+
+<!-- DOCTOR -->
+<section class="sec doctor-sec" id="doctors">
+  <div class="leaf-deco leaf-tl"></div>
+  <div class="leaf-deco leaf-br"></div>
+  <div class="container doctor-wrap">
+    <div class="doc-photo-col">
+      <div class="doc-photo-frame">
+        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=85" alt="Dr. S. Matharaman"/>
+        <div class="doc-badge-pill">
+          <i class="fa-solid fa-tooth"></i>
+          <span>"Creating Healthy Smiles Everyday"</span>
+        </div>
+      </div>
+    </div>
+    <div class="doc-info">
+      <p class="label-gold">Expert Care</p>
+      <h2 class="doc-h2">You Can Trust</h2>
+      <p class="doc-p">At 4S Dentistree, we combine advanced technology with compassionate care to deliver the best dental experience. Your smile is our commitment.</p>
+      <div class="doc-sig">Dr. S. Matharaman</div>
+      <p class="doc-role">Founder &amp; Chief Dentist</p>
+      <a href="#" class="btn-primary">Know More About Us <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="doc-stats-col">
+      <div class="doc-stat"><i class="fa-regular fa-calendar-days"></i><div><strong>15+</strong><span>Years of Experience</span></div></div>
+      <div class="doc-stat"><i class="fa-solid fa-users"></i><div><strong>5000+</strong><span>Happy Patients</span></div></div>
+      <div class="doc-stat"><i class="fa-solid fa-microscope"></i><div><strong>Modern Equipment</strong></div></div>
+      <div class="doc-stat"><i class="fa-solid fa-heart"></i><div><strong>Trusted by Families</strong></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="sec ba-sec" id="gallery">
+  <div class="container">
+    <div class="sec-head">
+      <h2>Real Smiles. Real Transformations.</h2>
+      <p>See the difference a confident smile can make.</p>
+    </div>
+    <div class="ba-row">
+      <button class="circle-btn" id="baPrev"><i class="fa-solid fa-chevron-left"></i></button>
+      <div class="ba-frame">
+        <div class="ba-wrap" id="baWrap">
+          <!-- Before: stained/yellow teeth -->
+          <img class="ba-base" src="https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?w=800&q=80" alt="Before"/>
+          <!-- After: white bright teeth -->
+          <div class="ba-clip" id="baClip">
+            <img src="https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?w=800&q=80" alt="After" style="filter:brightness(1.18) saturate(.3) contrast(1.1);"/>
+          </div>
+          <div class="ba-line" id="baLine">
+            <div class="ba-knob"><i class="fa-solid fa-arrows-left-right"></i></div>
+          </div>
+          <span class="ba-lbl ba-lbl-l">Before</span>
+          <span class="ba-lbl ba-lbl-r">After</span>
+        </div>
+      </div>
+      <button class="circle-btn" id="baNext"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec testi-sec">
+  <div class="container">
+    <div class="sec-head">
+      <h2>What Our Patients Say</h2>
+      <p>Real stories. Brighter smiles.</p>
+    </div>
+    <div class="testi-row">
+      <button class="circle-btn" id="testiPrev"><i class="fa-solid fa-chevron-left"></i></button>
+      <div class="testi-viewport">
+        <div class="testi-track" id="testiTrack"
+          hx-get="partials/testimonials.html"
+          hx-trigger="intersect once"
+          hx-swap="innerHTML">
+          <div class="loader"><i class="fa-solid fa-spinner fa-spin"></i></div>
+        </div>
+      </div>
+      <button class="circle-btn" id="testiNext"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- APPOINTMENT -->
+<section class="appt-sec" id="appointment">
+  <!-- ONE background image fills entire section -->
+  <div class="appt-bg">
+    <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=1600&q=85" alt="Happy family"/>
+  </div>
+  <div class="leaf-deco leaf-tl"></div>
+  <div class="leaf-deco leaf-br"></div>
+  <!-- form content on left, family photo visible naturally on right -->
+  <div class="appt-left">
+    <p class="appt-eyebrow">Ready For A Healthier Smile?</p>
+    <h2 class="appt-title">Book Your Appointment <span class="gold">Today</span></h2>
+    <form class="appt-form"
+      hx-post="partials/book.php"
+      hx-target="#apptMsg"
+      hx-swap="innerHTML"
+      hx-indicator="#apptSpin">
+      <div class="appt-fields">
+        <input type="text" name="name"  placeholder="Your Name"   required/>
+        <input type="tel"  name="phone" placeholder="Phone Number" required/>
+        <input type="date" name="date"                             required/>
+        <button type="submit" class="btn-primary">Book Now <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </form>
+    <span id="apptSpin" class="htmx-indicator"><i class="fa-solid fa-spinner fa-spin"></i></span>
+    <div id="apptMsg" class="appt-msg"></div>
+    <div class="appt-perks">
+      <span><i class="fa-solid fa-bolt"></i> Quick Appointment</span>
+      <span><i class="fa-regular fa-clock"></i> Flexible Timings</span>
+      <span><i class="fa-regular fa-face-smile"></i> Friendly Staff</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="logo" href="#home">
+        <img src="https://img.icons8.com/color/48/tooth.png" alt="logo"/>
+        <div>
+          <span class="logo-name">4S Dentistree</span>
+          <span class="logo-sub">Smile • Care • Confidence • For Life</span>
+        </div>
+      </a>
+      <div class="socials">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Treatments →</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our Services</h4>
+      <ul>
+        <li><a href="#">General Dentistry</a></li>
+        <li><a href="#">Cosmetic Dentistry</a></li>
+        <li><a href="#">Dental Implants</a></li>
+        <li><a href="#">Orthodontics</a></li>
+        <li><a href="#">Pediatric Dentistry</a></li>
+        <li><a href="#">More Services</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <ul>
+        <li><i class="fa-solid fa-phone"></i> +91 98765 43210</li>
+        <li><i class="fa-solid fa-envelope"></i> info@4sdentistree.in</li>
+        <li><i class="fa-solid fa-location-dot"></i> Chennai, Tamil Nadu</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span>© 2026 4S Dentistree. All rights reserved.</span>
+    <span>Designed with <i class="fa-solid fa-heart" style="color:#e74c3c"></i> by a healthier tomorrow</span>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
