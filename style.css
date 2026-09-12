@@ -93,21 +93,21 @@ ul   { list-style: none; }
   background: #fff;
 }
 
-/* Two-column row: left=text, right=photo */
+/* Two-column: left=text, right=photo */
 .hero-main {
   display: grid;
   grid-template-columns: 44% 56%;
-  min-height: 520px;
+  min-height: 420px;
 }
 
-/* LEFT: white, text */
+/* LEFT: white bg, text */
 .hero-left {
   background: #fff;
   padding: 60px 48px 60px 60px;
   display: flex; flex-direction: column; justify-content: center;
   position: relative; z-index: 2;
+  order: 1;
 }
-/* fade right edge so it blends into photo */
 .hero-left::after {
   content: '';
   position: absolute; top: 0; right: -60px; bottom: 0; width: 60px;
@@ -137,21 +137,23 @@ ul   { list-style: none; }
 }
 .btn-ghost:hover .play-btn { border-color: var(--gold); background: var(--gold); color: #fff; }
 
-/* RIGHT: photo fills full column height */
+/* RIGHT: photo fills full column */
 .hero-right {
   position: relative;
   overflow: hidden;
+  display: block;
+  order: 2;
 }
 .hero-right > img {
   width: 100%;
   height: 100%;
-  min-height: 520px;
+  min-height: 420px;
   object-fit: cover;
-  object-position: top center;
+  object-position: center 20%;
   display: block;
 }
 
-/* "Smile Confidently Always" — left portion of photo */
+/* Script text over photo */
 .hero-script {
   position: absolute;
   top: 50%; left: 18%;
@@ -162,7 +164,7 @@ ul   { list-style: none; }
   animation: fadeIn 1s .4s ease both;
 }
 
-/* "Your Smile Our Priority" badge — right side, vertically centered */
+/* Badge: right-center of photo */
 .hero-badge {
   position: absolute;
   top: 50%; right: 28px;
@@ -171,8 +173,7 @@ ul   { list-style: none; }
   padding: 14px 18px; display: flex; align-items: center; gap: 12px;
   box-shadow: 0 6px 28px rgba(0,0,0,.15);
   font-size: .82rem; font-weight: 600; color: var(--dark);
-  backdrop-filter: blur(6px); z-index: 4;
-  line-height: 1.4;
+  backdrop-filter: blur(6px); z-index: 4; line-height: 1.4;
   animation: fadeIn 1s .5s ease both;
 }
 .badge-icon {
@@ -182,7 +183,7 @@ ul   { list-style: none; }
   color: var(--gold); font-size: 1.15rem; flex-shrink: 0;
 }
 
-/* "Scroll Down" — bottom-right of photo, below badge */
+/* Scroll Down: bottom-right */
 .hero-scroll {
   position: absolute;
   bottom: 20px; right: 28px;
@@ -498,8 +499,9 @@ ul   { list-style: none; }
 }
 @media (max-width: 860px) {
   .hero-main { grid-template-columns: 1fr; }
-  .hero-right { display: none; }
-  .hero-left { padding: 40px 28px; }
+  .hero-right { display: block; min-height: 280px; order: 1; }
+  .hero-left { order: 2; padding: 32px 28px; }
+  .hero-right > img { min-height: 280px; }
   .hero-left::after { display: none; }
   .hero-stats { padding: 18px 28px; flex-wrap: wrap; gap: 14px; }
   .stat-sep { display: none; }
@@ -510,6 +512,8 @@ ul   { list-style: none; }
   .testi-card { flex: 0 0 calc(50% - 10px); }
   .appt-left { width: 100%; padding: 40px 28px; }
   .appt-bg::after { background: rgba(253,246,227,.92); }
+  .appt-fields { flex-direction: column; }
+  .appt-fields input, .appt-fields select, .appt-fields button { width: 100%; flex: 1 1 100%; }
 }
 @media (max-width: 600px) {
   .nav-links, .nav-right { display: none; }
@@ -519,7 +523,8 @@ ul   { list-style: none; }
   .testi-card { flex: 0 0 100%; }
   .footer-inner { grid-template-columns: 1fr; }
   .footer-bar { flex-direction: column; gap: 6px; text-align: center; }
-  .appt-left { padding: 40px 24px; }
+  .appt-left { padding: 28px 18px; }
   .appt-fields { flex-direction: column; }
-  .appt-fields input { flex: 1 1 100%; }
+  .appt-fields input, .appt-fields select, .appt-fields button { width: 100%; flex: 1 1 100%; }
+  .appt-perks { flex-direction: column; gap: 10px; }
 }
