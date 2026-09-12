@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>4S Dentistree – Smile • Care • Confidence • For Life</title>
+  <title>4S Dentistree – Your Smile. Our Passion</title>
   <script src="https://unpkg.com/htmx.org@1.9.10"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
@@ -28,7 +28,7 @@
       <img src="https://img.icons8.com/color/48/tooth.png" alt="logo"/>
       <div>
         <span class="logo-name">4S Dentistree</span>
-        <span class="logo-sub">Smile • Care • Confidence • For Life</span>
+        <span class="logo-sub">Your Smile. Our Passion</span>
       </div>
     </a>
     <ul class="nav-links">
@@ -87,9 +87,9 @@
 
   <!-- Stats bar: full width below -->
   <div class="hero-stats">
-    <div class="stat"><i class="fa-solid fa-users"></i><div><strong>5000+</strong><span>Happy Patients</span></div></div>
+    <div class="stat"><i class="fa-solid fa-users"></i><div><strong class="stat-value" data-count="5000">0</strong><span>Happy Patients</span></div></div>
     <div class="stat-sep"></div>
-    <div class="stat"><i class="fa-solid fa-shield-halved"></i><div><strong>15+</strong><span>Years of Expertise</span></div></div>
+    <div class="stat"><i class="fa-solid fa-shield-halved"></i><div><strong class="stat-value" data-count="15">0</strong><span>Years of Expertise</span></div></div>
     <div class="stat-sep"></div>
     <div class="stat"><i class="fa-solid fa-gears"></i><div><strong>Advanced</strong><span>Technology</span></div></div>
     <div class="stat-sep"></div>
@@ -108,7 +108,7 @@
       <p>From routine check-ups to advanced treatments, we provide complete dental solutions for you and your family.</p>
     </div>
     <div class="svc-grid" id="svcGrid"
-      hx-get="partials/services.html"
+      hx-get="partials/services.html?v=2"
       hx-trigger="intersect once"
       hx-swap="innerHTML">
       <div class="loader"><i class="fa-solid fa-spinner fa-spin"></i></div>
@@ -124,7 +124,7 @@
   <div class="container doctor-wrap">
     <div class="doc-photo-col">
       <div class="doc-photo-frame">
-        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=85" alt="Dr. S. Matharaman"/>
+        <img src="https://img1.wsimg.com/isteam/ip/8a5d8527-6f3d-4013-9f7b-d0ed09aa97cf/IMG_9090-1.jpg/:/cr=t:2.32%25,l:0%25,w:100%25,h:66.64%25/rs=w:1200,h:1200,cg:true" alt="Dr. Swapna Sreenivasagan"/>
         <div class="doc-badge-pill">
           <i class="fa-solid fa-tooth"></i>
           <span>"Creating Healthy Smiles Everyday"</span>
@@ -132,12 +132,12 @@
       </div>
     </div>
     <div class="doc-info">
-      <p class="label-gold">Expert Care</p>
+      <p class="label-gold">Meet Our Chief Dental Surgeon</p>
       <h2 class="doc-h2">You Can Trust</h2>
-      <p class="doc-p">At 4S Dentistree, we combine advanced technology with compassionate care to deliver the best dental experience. Your smile is our commitment.</p>
-      <div class="doc-sig">Dr. S. Matharaman</div>
-      <p class="doc-role">Founder &amp; Chief Dentist</p>
-      <a href="#" class="btn-primary">Know More About Us <i class="fa-solid fa-arrow-right"></i></a>
+      <p class="doc-p">Dr. Swapna Sreenivasagan brings dedicated orthodontic care and a thoughtful, patient-first approach to every smile transformation at 4S Dentistree.</p>
+      <div class="doc-sig">Dr. Swapna Sreenivasagan</div>
+      <p class="doc-role">MDS, PhD · Orthodontics &amp; Dentofacial Orthopaedics<br>Chief Dental Surgeon</p>
+      <a href="https://4sdentistree.in/" target="_blank" rel="noopener" class="btn-primary">Know More About Us <i class="fa-solid fa-arrow-right"></i></a>
     </div>
     <div class="doc-stats-col">
       <div class="doc-stat"><i class="fa-regular fa-calendar-days"></i><div><strong>15+</strong><span>Years of Experience</span></div></div>
@@ -258,27 +258,83 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="sec testi-sec">
+<!-- WHAT WE DO -->
+<section class="sec whatwedo-sec">
   <div class="container">
-    <div class="sec-head">
-      <h2>What Our Patients Say</h2>
-      <p>Real stories. Brighter smiles.</p>
+    <div class="wwd-head">
+      <p class="label-gold">— ALL TREATMENTS UNDER ONE ROOF —</p>
+      <h2>What We <span class="gold">Do</span></h2>
+      <p>Every smile is unique. Every treatment is personalised. Here's what we specialise in.</p>
     </div>
-    <div class="testi-row">
-      <button class="circle-btn" id="testiPrev"><i class="fa-solid fa-chevron-left"></i></button>
-      <div class="testi-viewport">
-        <div class="testi-track" id="testiTrack"
-          hx-get="partials/testimonials.html"
-          hx-trigger="intersect once"
-          hx-swap="innerHTML">
-          <div class="loader"><i class="fa-solid fa-spinner fa-spin"></i></div>
-        </div>
-      </div>
-      <button class="circle-btn" id="testiNext"><i class="fa-solid fa-chevron-right"></i></button>
+    <div class="wwd-grid">
+      <div class="wwd-card wwd-active"><img class="wwd-image" src="https://images.pexels.com/photos/3762453/pexels-photo-3762453.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500&amp;h=500&amp;fit=crop" alt="Teeth whitening treatment"><div class="wwd-icon"><i class="fa-solid fa-tooth"></i></div><span class="wwd-vertical-title">Whitening</span><div class="wwd-review"><strong>Patient Review</strong><span>★★★★★</span><p>A comfortable visit and a brighter, more confident smile.</p></div><div class="wwd-info"><h3>Teeth<br>Whitening</h3></div></div>
+      <div class="wwd-card"><img class="wwd-image" src="https://images.pexels.com/photos/6502307/pexels-photo-6502307.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500&amp;h=500&amp;fit=crop" alt="Dental implant treatment"><div class="wwd-icon"><i class="fa-solid fa-teeth"></i></div><span class="wwd-vertical-title">Implants</span><div class="wwd-review"><strong>Patient Review</strong><span>★★★★★</span><p>Clear guidance, gentle care and a result I can smile about.</p></div><div class="wwd-info"><h3>Dental<br>Implants</h3></div></div>
+      <div class="wwd-card"><img class="wwd-image" src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=500&amp;q=85" alt="Cosmetic smile treatment"><div class="wwd-icon"><i class="fa-solid fa-star"></i></div><span class="wwd-vertical-title">Cosmetic</span><div class="wwd-review"><strong>Patient Review</strong><span>★★★★★</span><p>The team understood exactly how I wanted my smile to look.</p></div><div class="wwd-info"><h3>Smile<br>Veneers</h3></div></div>
+      <div class="wwd-card"><img class="wwd-image" src="https://images.pexels.com/photos/6502308/pexels-photo-6502308.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500&amp;h=500&amp;fit=crop" alt="Orthodontic alignment treatment"><div class="wwd-icon"><i class="fa-solid fa-circle-nodes"></i></div><span class="wwd-vertical-title">Alignment</span><div class="wwd-review"><strong>Patient Review</strong><span>★★★★★</span><p>My aligners fit well and the whole process felt simple.</p></div><div class="wwd-info"><h3>Braces &amp;<br>Aligners</h3></div></div>
+      <div class="wwd-card"><img class="wwd-image" src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=500&amp;q=85" alt="Gum treatment"><div class="wwd-icon"><i class="fa-solid fa-heart-pulse"></i></div><span class="wwd-vertical-title">Gum Care</span><div class="wwd-review"><strong>Patient Review</strong><span>★★★★★</span><p>Kind, careful treatment and a much healthier smile.</p></div><div class="wwd-info"><h3>Gum<br>Treatment</h3></div></div>
+      <div class="wwd-card"><img class="wwd-image" src="https://images.pexels.com/photos/3762456/pexels-photo-3762456.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500&amp;h=500&amp;fit=crop" alt="Smile makeover result"><div class="wwd-icon"><i class="fa-regular fa-face-smile"></i></div><span class="wwd-vertical-title">Full Smile</span><div class="wwd-review"><strong>Patient Review</strong><span>★★★★★</span><p>A complete smile refresh with friendly support throughout.</p></div><div class="wwd-info"><h3>Smile<br>Makeover</h3></div></div>
     </div>
   </div>
 </section>
+
+<!-- INSTAGRAM PORTFOLIO -->
+<section class="sec insta-sec">
+  <div class="container">
+    <div class="insta-head">
+      <p class="insta-sub">The work speaks louder than promises.</p>
+      <h2>The Portfolio <span class="gold">Starts Here.</span></h2>
+      <p class="insta-tagline">Instagram Finishes the Story.</p>
+    </div>
+    <div class="insta-grid">
+      <a class="insta-item" href="https://www.instagram.com/" target="_blank">
+        <div class="insta-thumb" style="background:url('https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&q=80') center/cover"></div>
+        <div class="insta-play"><i class="fa-brands fa-instagram"></i></div>
+        <div class="insta-overlay"><span>Watch on Instagram</span></div>
+      </a>
+      <a class="insta-item" href="https://www.instagram.com/" target="_blank">
+        <div class="insta-thumb" style="background:url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&q=80') center/cover"></div>
+        <div class="insta-play"><i class="fa-brands fa-instagram"></i></div>
+        <div class="insta-overlay"><span>Watch on Instagram</span></div>
+      </a>
+      <a class="insta-item" href="https://www.instagram.com/" target="_blank">
+        <div class="insta-thumb" style="background:url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=400&q=80') center/cover"></div>
+        <div class="insta-play"><i class="fa-brands fa-instagram"></i></div>
+        <div class="insta-overlay"><span>Watch on Instagram</span></div>
+      </a>
+      <a class="insta-item" href="https://www.instagram.com/" target="_blank">
+        <div class="insta-thumb" style="background:url('https://images.pexels.com/photos/3762456/pexels-photo-3762456.jpeg?w=400&q=80') center/cover"></div>
+        <div class="insta-play"><i class="fa-brands fa-instagram"></i></div>
+        <div class="insta-overlay"><span>Watch on Instagram</span></div>
+      </a>
+      <a class="insta-item" href="https://www.instagram.com/" target="_blank">
+        <div class="insta-thumb" style="background:url('https://images.pexels.com/photos/3762453/pexels-photo-3762453.jpeg?w=400&q=80') center/cover"></div>
+        <div class="insta-play"><i class="fa-brands fa-instagram"></i></div>
+        <div class="insta-overlay"><span>Watch on Instagram</span></div>
+      </a>
+      <a class="insta-item" href="https://www.instagram.com/" target="_blank">
+        <div class="insta-thumb" style="background:url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80') center/cover"></div>
+        <div class="insta-play"><i class="fa-brands fa-instagram"></i></div>
+        <div class="insta-overlay"><span>Watch on Instagram</span></div>
+      </a>
+    </div>
+    <div class="insta-cta">
+      <a href="https://www.instagram.com/" target="_blank" class="btn-insta">
+        <i class="fa-brands fa-instagram"></i> Follow Us on Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="video-modal" id="videoModal" aria-hidden="true" role="dialog" aria-label="Dental care video">
+  <div class="video-modal-backdrop" data-video-close></div>
+  <div class="video-modal-panel">
+    <button class="video-modal-close" type="button" data-video-close aria-label="Close video"><i class="fa-solid fa-xmark"></i></button>
+    <video id="dentalVideo" controls playsinline preload="metadata" poster="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1200&amp;q=85">
+      <source src="https://videos.pexels.com/video-files/4488693/4488693-hd_1920_1080_25fps.mp4" type="video/mp4"/>
+    </video>
+    <p class="video-modal-caption">Modern care for confident, healthier smiles.</p>
+  </div>
+</div>
 
 <!-- APPOINTMENT -->
 <section class="appt-sec" id="appointment">
@@ -296,7 +352,6 @@
       <div class="appt-fields">
         <input type="text" id="apptName" name="name" placeholder="Your Name" required/>
         <input type="tel" id="apptPhone" name="phone" placeholder="Phone Number" maxlength="10" required/>
-        <input type="date" id="apptDate" name="date" required/>
         <select id="apptTreatment" name="treatment" required>
           <option value="" disabled selected>Select Treatment</option>
           <option>Teeth Whitening</option>
@@ -326,7 +381,7 @@
         <img src="https://img.icons8.com/color/48/tooth.png" alt="logo"/>
         <div>
           <span class="logo-name">4S Dentistree</span>
-          <span class="logo-sub">Smile • Care • Confidence • For Life</span>
+          <span class="logo-sub">Your Smile. Our Passion</span>
         </div>
       </a>
       <div class="socials">
@@ -371,6 +426,17 @@
     <span>Designed with <i class="fa-solid fa-heart" style="color:#e74c3c"></i> by a healthier tomorrow</span>
   </div>
 </footer>
+
+<a class="whatsapp-float" href="https://wa.me/919444406704?text=Hello%204S%20Dentistree%2C%20I%20would%20like%20to%20know%20more%20about%20your%20dental%20treatments." target="_blank" rel="noopener" aria-label="Chat with 4S Dentistree on WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<nav class="quick-actions" aria-label="Quick actions">
+  <a href="#appointment" class="quick-action"><i class="fa-regular fa-calendar-check"></i><span>Book<br>Appointment</span></a>
+  <a href="#contact" class="quick-action"><i class="fa-solid fa-location-dot"></i><span>Find<br>Clinic</span></a>
+  <a href="#services" class="quick-action"><i class="fa-solid fa-tooth"></i><span>Dental<br>Health Plan</span></a>
+  <a href="tel:+919444406704" class="quick-action"><i class="fa-solid fa-phone-volume"></i><span>Instant<br>Callback</span></a>
+</nav>
 
 <!-- LOADER OVERLAY -->
 <div id="bookLoader" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;flex-direction:column;align-items:center;justify-content:center;gap:16px">

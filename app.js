@@ -3,10 +3,6 @@ $.validator.addMethod('indianPhone', function(v) {
   return /^[6-9]\d{9}$/.test(v);
 }, 'Enter a valid 10-digit Indian mobile number.');
 
-const _d = new Date(); 
-const _today = _d.getFullYear() + '-' + String(_d.getMonth()+1).padStart(2,'0') + '-' + String(_d.getDate()).padStart(2,'0');
-$('#apptDate').attr('min', _today);
-
 $('#apptForm').on('submit', function() {
   if ($(this).valid()) {
     const loader = $('#bookLoader');
@@ -18,13 +14,11 @@ $('#apptForm').validate({
   rules: {
     name:      { required: true, minlength: 2 },
     phone:     { required: true, indianPhone: true },
-    date:      { required: true },
     treatment: { required: true }
   },
   messages: {
     name:      { required: 'Name is required.', minlength: 'Enter at least 2 characters.' },
     phone:     { required: 'Phone number is required.' },
-    date:      { required: 'Please select a date.' },
     treatment: { required: 'Please select a treatment.' }
   },
   errorClass: 'error',
@@ -43,6 +37,51 @@ window.addEventListener('scroll', () => {
   document.getElementById('navbar').style.boxShadow =
     window.scrollY > 50 ? '0 4px 24px rgba(0,0,0,.13)' : '';
 });
+
+/* ── Quick-action bar visibility ── */
+const quickActions = document.querySelector('.quick-actions');
+let lastScrollY = window.scrollY;
+if (quickActions) {
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    if (currentScrollY <= 40 || currentScrollY < lastScrollY) {
+      quickActions.classList.remove('is-hidden');
+    } else if (currentScrollY > lastScrollY + 4) {
+      quickActions.classList.add('is-hidden');
+    }
+    lastScrollY = currentScrollY;
+  }, { passive: true });
+}
+
+/* ── Hero stats count-up ── */
+const statsBar = document.querySelector('.hero-stats');
+const statValues = document.querySelectorAll('.stat-value');
+let statsStarted = false;
+function animateStatValues() {
+  if (statsStarted) return;
+  statsStarted = true;
+  statValues.forEach(value => {
+    const target = Number(value.dataset.count);
+    const duration = 1200;
+    const start = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      value.textContent = Math.floor(target * eased).toLocaleString() + '+';
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+}
+if (statsBar && statValues.length) {
+  const statsObserver = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      animateStatValues();
+      statsObserver.disconnect();
+    }
+  }, { threshold: .35 });
+  statsObserver.observe(statsBar);
+}
 
 /* ── Mobile menu ── */
 document.getElementById('navBurger').addEventListener('click', () => {
@@ -97,11 +136,112 @@ function testiMove(dir) {
   const w = cards[0].getBoundingClientRect().width + 20;
   track.style.transform = `translateX(-${tIdx * w}px)`;
 }
-document.getElementById('testiPrev').addEventListener('click', () => testiMove(-1));
-document.getElementById('testiNext').addEventListener('click', () => testiMove(1));
+document.getElementById('testiPrev')?.addEventListener('click', () => testiMove(-1));
+document.getElementById('testiNext')?.addEventListener('click', () => testiMove(1));
 
-document.body.addEventListener('htmx:afterSwap', e => {
-  if (e.detail.target.id === 'testiTrack') tIdx = 0;
+/* ── What We Do — scroll entrance animation ── */
+const wwdObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const cards = entry.target.querySelectorAll('.wwd-card');
+      cards.forEach((card, i) => {
+        setTimeout(() => card.classList.add('wwd-visible'), i * 120);
+      });
+      if (window.innerWidth > 900) {
+        setTimeout(() => entry.target.classList.add('fan-out'), 720);
+        setTimeout(() => entry.target.classList.remove('fan-out'), 3000);
+      }
+      wwdObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+const wwdGrid = document.querySelector('.wwd-grid');
+if (wwdGrid) wwdObserver.observe(wwdGrid);
+
+/* ── Instagram portfolio reveal ── */
+const instaGrid = document.querySelector('.insta-grid');
+if (instaGrid) {
+  const instaObserver = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      instaGrid.querySelectorAll('.insta-item').forEach((item, index) => {
+        setTimeout(() => item.classList.add('insta-visible'), index * 90);
+      });
+      instaObserver.disconnect();
+    }
+  }, { threshold: .15 });
+  instaObserver.observe(instaGrid);
+}
+
+/* ── Portfolio dental video lightbox ── */
+const videoModal = document.getElementById('videoModal');
+const dentalVideo = document.getElementById('dentalVideo');
+if (videoModal && dentalVideo) {
+  const closeVideo = () => {
+    dentalVideo.pause();
+    dentalVideo.currentTime = 0;
+    videoModal.classList.remove('is-open');
+    videoModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+  document.querySelectorAll('.insta-item').forEach(item => {
+    item.addEventListener('click', event => {
+      event.preventDefault();
+      videoModal.classList.add('is-open');
+      videoModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      dentalVideo.play().catch(() => {});
+    });
+  });
+  videoModal.querySelectorAll('[data-video-close]').forEach(control => control.addEventListener('click', closeVideo));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && videoModal.classList.contains('is-open')) closeVideo();
+  });
+}
+
+/* Touch-friendly image zoom for the What We Do cards. */
+document.querySelectorAll('.wwd-card').forEach(card => {
+  card.tabIndex = 0;
+  card.addEventListener('mouseenter', () => {
+    document.querySelectorAll('.wwd-card.wwd-active').forEach(activeCard => activeCard.classList.remove('wwd-active'));
+    card.classList.add('wwd-active');
+  });
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.wwd-card.wwd-active').forEach(activeCard => activeCard.classList.remove('wwd-active'));
+    card.classList.add('wwd-active');
+  });
 });
 
+/* ── Responsive treatment slider autoplay ── */
+if (wwdGrid) {
+  const sliderCards = [...wwdGrid.querySelectorAll('.wwd-card')];
+  const sliderMedia = window.matchMedia('(max-width: 860px)');
+  let sliderIndex = 0;
+  let sliderTimer;
+  let sliderPaused = false;
+
+  const moveTreatmentSlider = () => {
+    if (!sliderMedia.matches || sliderPaused || document.hidden) return;
+    sliderIndex = (sliderIndex + 1) % sliderCards.length;
+    sliderCards.forEach(card => card.classList.remove('wwd-active'));
+    sliderCards[sliderIndex].classList.add('wwd-active');
+    const activeCard = sliderCards[sliderIndex];
+    const centeredLeft = activeCard.offsetLeft - (wwdGrid.clientWidth - activeCard.offsetWidth) / 2;
+    wwdGrid.scrollTo({ left: Math.max(0, centeredLeft), behavior: 'smooth' });
+  };
+
+  const startTreatmentSlider = () => {
+    clearInterval(sliderTimer);
+    if (sliderMedia.matches) sliderTimer = setInterval(moveTreatmentSlider, 3600);
+  };
+
+  ['mouseenter', 'touchstart', 'focusin'].forEach(eventName => {
+    wwdGrid.addEventListener(eventName, () => { sliderPaused = true; }, { passive: true });
+  });
+  ['mouseleave', 'touchend', 'focusout'].forEach(eventName => {
+    wwdGrid.addEventListener(eventName, () => { sliderPaused = false; }, { passive: true });
+  });
+  sliderMedia.addEventListener('change', startTreatmentSlider);
+  startTreatmentSlider();
+}
 

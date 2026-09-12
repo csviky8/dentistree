@@ -274,7 +274,7 @@ $wa_msg    = urlencode("Hi 4S Dentistree! I just booked an appointment.\nName: $
     <img class="logo-icon" src="https://img.icons8.com/color/48/tooth.png" alt="logo"/>
     <div>
       <div class="brand-name">4S Dentistree</div>
-      <div class="brand-sub">Smile • Care • Confidence • For Life</div>
+      <div class="brand-sub">Your Smile. Our Passion</div>
     </div>
   </header>
 

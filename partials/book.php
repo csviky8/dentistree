@@ -6,10 +6,9 @@ use PHPMailer\PHPMailer\Exception;
 
 $name      = htmlspecialchars(trim($_POST['name']      ?? ''));
 $phone     = htmlspecialchars(trim($_POST['phone']     ?? ''));
-$date      = htmlspecialchars(trim($_POST['date']      ?? ''));
 $treatment = htmlspecialchars(trim($_POST['treatment'] ?? 'General Consultation'));
 
-if (!$name || !$phone || !$date) {
+if (!$name || !$phone) {
     echo "<span style='color:#ffb3b3'>Please fill in all fields.</span>";
     exit;
 }
@@ -60,7 +59,6 @@ try {
         <table style='width:100%;border-collapse:collapse;font-size:.9rem'>
           <tr><td style='padding:8px 0;color:#888;width:130px'>Patient Name</td><td style='padding:8px 0;font-weight:700;color:#1c1c1c'>$name</td></tr>
           <tr><td style='padding:8px 0;color:#888'>Phone</td><td style='padding:8px 0;font-weight:700;color:#1c1c1c'>$phone</td></tr>
-          <tr><td style='padding:8px 0;color:#888'>Preferred Date</td><td style='padding:8px 0;font-weight:700;color:#1c1c1c'>$date</td></tr>
           <tr><td style='padding:8px 0;color:#888'>Treatment</td><td style='padding:8px 0;font-weight:700;color:#b8860b'>$treatment</td></tr>
         </table>
         <div style='margin-top:20px;padding:14px;background:#fdf6e3;border-radius:8px;font-size:.82rem;color:#555'>
@@ -68,7 +66,7 @@ try {
         </div>
       </div>
       <div style='background:#f5f0e8;padding:14px 28px;text-align:center;font-size:.75rem;color:#aaa'>
-        4S Dentistree – Smile • Care • Confidence • For Life
+        4S Dentistree – Your Smile. Our Passion
       </div>
     </div>";
 
