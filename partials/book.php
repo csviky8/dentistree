@@ -47,26 +47,29 @@ try {
     // ── Email TO clinic ──
     $mail->setFrom($smtp_user, '4S Dentistree Website');
     $mail->addAddress($clinic_email, '4S Dentistree');
-    $mail->Subject = "New Appointment Request - $name";
+    $mail->addEmbeddedImage(__DIR__ . '/../images/81588.png', 'clinic-logo', '81588.png', 'base64', 'image/png');
+    $mail->Subject = "New Appointment Request | 4S Dentistree - $name";
     $mail->isHTML(true);
     $mail->Body = "
     <div style='font-family:Arial,sans-serif;max-width:520px;margin:0 auto;border:1px solid #e8d5a0;border-radius:12px;overflow:hidden'>
       <div style='background:#b8860b;padding:20px 28px;text-align:center'>
+        <img src='cid:clinic-logo' alt='4S Dentistree logo' style='width:72px;height:72px;object-fit:contain;margin:0 auto 10px'>
         <h2 style='color:#fff;margin:0;font-size:1.2rem'>New Appointment Request</h2>
-        <p style='color:#fdf6e3;margin:4px 0 0;font-size:.85rem'>4S Dentistree Website</p>
+        <p style='color:#fdf6e3;margin:4px 0 0;font-size:.85rem'>Appointment request for Dr. Swapna Sreenivasagan</p>
       </div>
       <div style='padding:28px'>
         <table style='width:100%;border-collapse:collapse;font-size:.9rem'>
           <tr><td style='padding:8px 0;color:#888;width:130px'>Patient Name</td><td style='padding:8px 0;font-weight:700;color:#1c1c1c'>$name</td></tr>
           <tr><td style='padding:8px 0;color:#888'>Phone</td><td style='padding:8px 0;font-weight:700;color:#1c1c1c'>$phone</td></tr>
           <tr><td style='padding:8px 0;color:#888'>Treatment</td><td style='padding:8px 0;font-weight:700;color:#b8860b'>$treatment</td></tr>
+          <tr><td style='padding:8px 0;color:#888'>Doctor</td><td style='padding:8px 0;font-weight:700;color:#1c1c1c'>Dr. Swapna Sreenivasagan</td></tr>
         </table>
         <div style='margin-top:20px;padding:14px;background:#fdf6e3;border-radius:8px;font-size:.82rem;color:#555'>
           Please contact the patient within a few hours to confirm the appointment.
         </div>
       </div>
       <div style='background:#f5f0e8;padding:14px 28px;text-align:center;font-size:.75rem;color:#aaa'>
-        4S Dentistree – Your Smile. Our Passion
+        4S Dentistree – Your Smile. Our Passion | Dr. Swapna Sreenivasagan
       </div>
     </div>";
 

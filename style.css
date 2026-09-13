@@ -39,11 +39,16 @@ ul   { list-style: none; }
 .sec-head p  { color: var(--text); font-size: .93rem; max-width: 540px; margin: 0 auto; line-height: 1.7; }
 .loader { text-align: center; padding: 40px; color: var(--gold); font-size: 1.6rem; grid-column: 1/-1; }
 
-/* Leaf decorations */
+/* Dental decorations */
 .leaf-deco {
   position: absolute; width: 180px; height: 180px;
-  opacity: .15; pointer-events: none; z-index: 0;
-  background: url('https://img.icons8.com/color/96/leaf.png') no-repeat center/contain;
+  opacity: .2; pointer-events: none; z-index: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-family: 'Font Awesome 6 Free';
+}
+.leaf-deco::before {
+  content: '\f5c9';
+  font-size: 126px; font-weight: 900;
 }
 .leaf-tl { top: -20px; left: -30px; transform: rotate(-30deg); }
 .leaf-br { bottom: -20px; right: -30px; transform: rotate(150deg); }
@@ -621,10 +626,11 @@ ul   { list-style: none; }
 /* single full-width background image */
 .appt-bg {
   position: absolute; inset: 0; z-index: 0;
+  background: var(--gold-pale);
 }
 .appt-bg img {
   width: 100%; height: 100%;
-  object-fit: cover; object-position: center top;
+  object-fit: cover; object-position: center center;
   display: block;
 }
 /* gradient overlay: opaque cream on left, transparent on right */

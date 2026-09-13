@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="images/81588.png"/>
   <title>Thank You – 4S Dentistree</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
@@ -271,7 +272,7 @@ $wa_msg    = urlencode("Hi 4S Dentistree! I just booked an appointment.\nName: $
 
   <!-- Header -->
   <header class="ty-header">
-    <img class="logo-icon" src="https://img.icons8.com/color/48/tooth.png" alt="logo"/>
+    <img class="logo-icon" src="images/81588.png" alt="4S Dentistree logo"/>
     <div>
       <div class="brand-name">4S Dentistree</div>
       <div class="brand-sub">Your Smile. Our Passion</div>
@@ -314,7 +315,7 @@ $wa_msg    = urlencode("Hi 4S Dentistree! I just booked an appointment.\nName: $
       <p class="ty-desc">
         Your consultation request has been successfully registered.<br>
         Our clinical coordinator will reach out to you within a few hours<br>
-        to arrange your appointment with <strong>Dr. S. Matharaman.</strong>
+        to arrange your appointment with <strong>Dr. Swapna Sreenivasagan.</strong>
       </p>
 
       <div class="ty-summary">
@@ -369,7 +370,7 @@ $wa_msg    = urlencode("Hi 4S Dentistree! I just booked an appointment.\nName: $
         <div class="step-body">
           <div class="step-icon"><i class="fa-solid fa-user-doctor"></i></div>
           <strong>1-on-1 Consultation</strong>
-          <p>Personalized evaluation & transparent surgical planning with Dr. Matharaman.</p>
+          <p>Personalized evaluation and transparent treatment planning with Dr. Swapna Sreenivasagan.</p>
         </div>
       </div>
     </div>

@@ -83,6 +83,36 @@ if (statsBar && statValues.length) {
   statsObserver.observe(statsBar);
 }
 
+/* ── Trust section count-up ── */
+const trustStats = document.querySelector('.doc-stats-col');
+const trustStatValues = document.querySelectorAll('.trust-stat-value');
+let trustStatsStarted = false;
+function animateTrustStats() {
+  if (trustStatsStarted) return;
+  trustStatsStarted = true;
+  trustStatValues.forEach(value => {
+    const target = Number(value.dataset.count);
+    const duration = 1200;
+    const start = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      value.textContent = Math.floor(target * eased).toLocaleString() + '+';
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+}
+if (trustStats && trustStatValues.length) {
+  const trustStatsObserver = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      animateTrustStats();
+      trustStatsObserver.disconnect();
+    }
+  }, { threshold: .35 });
+  trustStatsObserver.observe(trustStats);
+}
+
 /* ── Mobile menu ── */
 document.getElementById('navBurger').addEventListener('click', () => {
   document.getElementById('navDrawer').classList.toggle('open');

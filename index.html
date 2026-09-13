@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="images/81588.png"/>
   <title>4S Dentistree – Your Smile. Our Passion</title>
   <script src="https://unpkg.com/htmx.org@1.9.10"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
@@ -25,7 +26,7 @@
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
     <a class="logo" href="#home">
-      <img src="https://img.icons8.com/color/48/tooth.png" alt="logo"/>
+      <img src="images/81588.png" alt="4S Dentistree logo"/>
       <div>
         <span class="logo-name">4S Dentistree</span>
         <span class="logo-sub">Your Smile. Our Passion</span>
@@ -63,10 +64,7 @@
     <div class="hero-right">
       <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=900&q=85" alt="Beautiful young smiling woman dental"/>
       <div class="hero-script">Smile<br>Confidently<br>Always</div>
-      <div class="hero-badge">
-        <div class="badge-icon"><i class="fa-solid fa-tooth"></i></div>
-        <div>Your Smile<br><strong>Our Priority</strong></div>
-      </div>
+     
       <a href="#services" class="hero-scroll">
         <i class="fa-regular fa-circle-play"></i> Scroll Down
       </a>
@@ -89,7 +87,7 @@
   <div class="hero-stats">
     <div class="stat"><i class="fa-solid fa-users"></i><div><strong class="stat-value" data-count="5000">0</strong><span>Happy Patients</span></div></div>
     <div class="stat-sep"></div>
-    <div class="stat"><i class="fa-solid fa-shield-halved"></i><div><strong class="stat-value" data-count="15">0</strong><span>Years of Expertise</span></div></div>
+    <div class="stat"><i class="fa-solid fa-shield-halved"></i><div><strong class="stat-value" data-count="5">0</strong><span>Years of Expertise</span></div></div>
     <div class="stat-sep"></div>
     <div class="stat"><i class="fa-solid fa-gears"></i><div><strong>Advanced</strong><span>Technology</span></div></div>
     <div class="stat-sep"></div>
@@ -108,7 +106,7 @@
       <p>From routine check-ups to advanced treatments, we provide complete dental solutions for you and your family.</p>
     </div>
     <div class="svc-grid" id="svcGrid"
-      hx-get="partials/services.html?v=2"
+      hx-get="partials/services.html?v=3"
       hx-trigger="intersect once"
       hx-swap="innerHTML">
       <div class="loader"><i class="fa-solid fa-spinner fa-spin"></i></div>
@@ -140,8 +138,8 @@
       <a href="https://4sdentistree.in/" target="_blank" rel="noopener" class="btn-primary">Know More About Us <i class="fa-solid fa-arrow-right"></i></a>
     </div>
     <div class="doc-stats-col">
-      <div class="doc-stat"><i class="fa-regular fa-calendar-days"></i><div><strong>15+</strong><span>Years of Experience</span></div></div>
-      <div class="doc-stat"><i class="fa-solid fa-users"></i><div><strong>5000+</strong><span>Happy Patients</span></div></div>
+      <div class="doc-stat"><i class="fa-regular fa-calendar-days"></i><div><strong class="trust-stat-value" data-count="5">0</strong><span>Years of Experience</span></div></div>
+      <div class="doc-stat"><i class="fa-solid fa-users"></i><div><strong class="trust-stat-value" data-count="5000">0</strong><span>Happy Patients</span></div></div>
       <div class="doc-stat"><i class="fa-solid fa-microscope"></i><div><strong>Modern Equipment</strong></div></div>
       <div class="doc-stat"><i class="fa-solid fa-heart"></i><div><strong>Trusted by Families</strong></div></div>
     </div>
@@ -263,16 +261,18 @@
   <div class="container">
     <div class="wwd-head">
       <p class="label-gold">— ALL TREATMENTS UNDER ONE ROOF —</p>
-      <h2>What We <span class="gold">Do</span></h2>
+      <h2>What Our Patients <span class="gold">Say About Us</span></h2>
       <p>Every smile is unique. Every treatment is personalised. Here's what we specialise in.</p>
     </div>
     <div class="wwd-grid">
-      <div class="wwd-card wwd-active"><img class="wwd-image" src="https://images.pexels.com/photos/3762453/pexels-photo-3762453.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500&amp;h=500&amp;fit=crop" alt="Teeth whitening treatment"><div class="wwd-icon"><i class="fa-solid fa-tooth"></i></div><span class="wwd-vertical-title">Whitening</span><div class="wwd-review"><img src="images/review/review-01.png" alt="Google review"><img src="images/review/review-02.png" alt="Google review"></div><div class="wwd-info"><h3>Teeth<br>Whitening</h3></div></div>
-      <div class="wwd-card"><img class="wwd-image" src="https://images.pexels.com/photos/6502307/pexels-photo-6502307.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500&amp;h=500&amp;fit=crop" alt="Dental implant treatment"><div class="wwd-icon"><i class="fa-solid fa-teeth"></i></div><span class="wwd-vertical-title">Implants</span><div class="wwd-review"><img src="images/review/review-03.png" alt="Google review"><img src="images/review/review-04.png" alt="Google review"></div><div class="wwd-info"><h3>Dental<br>Implants</h3></div></div>
-      <div class="wwd-card"><img class="wwd-image" src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=500&amp;q=85" alt="Cosmetic smile treatment"><div class="wwd-icon"><i class="fa-solid fa-star"></i></div><span class="wwd-vertical-title">Cosmetic</span><div class="wwd-review"><img src="images/review/review-05.png" alt="Google review"><img src="images/review/review-06.png" alt="Google review"></div><div class="wwd-info"><h3>Smile<br>Veneers</h3></div></div>
-      <div class="wwd-card"><img class="wwd-image" src="https://images.pexels.com/photos/6502308/pexels-photo-6502308.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500&amp;h=500&amp;fit=crop" alt="Orthodontic alignment treatment"><div class="wwd-icon"><i class="fa-solid fa-circle-nodes"></i></div><span class="wwd-vertical-title">Alignment</span><div class="wwd-review"><img src="images/review/review-07.png" alt="Google review"><img src="images/review/review-08.png" alt="Google review"></div><div class="wwd-info"><h3>Braces &amp;<br>Aligners</h3></div></div>
-      <div class="wwd-card"><img class="wwd-image" src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=500&amp;q=85" alt="Gum treatment"><div class="wwd-icon"><i class="fa-solid fa-heart-pulse"></i></div><span class="wwd-vertical-title">Gum Care</span><div class="wwd-review"><img src="images/review/review-09.png" alt="Google review"><img src="images/review/review-10.png" alt="Google review"></div><div class="wwd-info"><h3>Gum<br>Treatment</h3></div></div>
-      <div class="wwd-card"><img class="wwd-image" src="https://images.pexels.com/photos/3762456/pexels-photo-3762456.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500&amp;h=500&amp;fit=crop" alt="Smile makeover result"><div class="wwd-icon"><i class="fa-regular fa-face-smile"></i></div><span class="wwd-vertical-title">Full Smile</span><div class="wwd-review"><img src="images/review/review-11.png" alt="Google review"><img src="images/review/review-12.png" alt="Google review"></div><div class="wwd-info"><h3>Smile<br>Makeover</h3></div></div>
+      <div class="wwd-card wwd-active"><img class="wwd-image" src="https://images.pexels.com/photos/6502307/pexels-photo-6502307.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500&amp;h=500&amp;fit=crop" alt="Dental crowns treatment"><div class="wwd-icon"><i class="fa-solid fa-crown"></i></div><span class="wwd-vertical-title">Dental Crowns</span><div class="wwd-review"><img src="images/review/review-01.png" alt="Google review"><img src="images/review/review-02.png" alt="Google review"></div><div class="wwd-info"><h3>Dental<br>Crowns</h3></div></div>
+      <div class="wwd-card"><img class="wwd-image" src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=500&amp;q=85" alt="Prosthodontic teeth replacement"><div class="wwd-icon"><i class="fa-solid fa-teeth"></i></div><span class="wwd-vertical-title">Prosthodontics</span><div class="wwd-review"><img src="images/review/review-03.png" alt="Google review"><img src="images/review/review-04.png" alt="Google review"></div><div class="wwd-info"><h3>Prosthodontics</h3></div></div>
+      <div class="wwd-card"><img class="wwd-image" src="https://images.pexels.com/photos/3762456/pexels-photo-3762456.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500&amp;h=500&amp;fit=crop" alt="Braces and aligners treatment"><div class="wwd-icon"><i class="fa-solid fa-grip-lines"></i></div><span class="wwd-vertical-title">Braces &amp; Aligners</span><div class="wwd-review"><img src="images/review/review-05.png" alt="Google review"><img src="images/review/review-06.png" alt="Google review"></div><div class="wwd-info"><h3>Braces &amp;<br>Aligners</h3></div></div>
+      <div class="wwd-card"><img class="wwd-image" src="https://images.pexels.com/photos/6502307/pexels-photo-6502307.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500&amp;h=400&amp;fit=crop" alt="Dental implants treatment"><div class="wwd-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div><span class="wwd-vertical-title">Dental Implants</span><div class="wwd-review"><img src="images/review/review-07.png" alt="Google review"><img src="images/review/review-08.png" alt="Google review"></div><div class="wwd-info"><h3>Dental<br>Implants</h3></div></div>
+      <div class="wwd-card"><img class="wwd-image" src="https://images.pexels.com/photos/6502308/pexels-photo-6502308.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500&amp;h=500&amp;fit=crop" alt="Tooth decay and root canal treatment"><div class="wwd-icon"><i class="fa-solid fa-tooth"></i></div><span class="wwd-vertical-title">Root Canal</span><div class="wwd-review"><img src="images/review/review-09.png" alt="Google review"><img src="images/review/review-10.png" alt="Google review"></div><div class="wwd-info"><h3>Decay &amp;<br>Root Canal</h3></div></div>
+      <div class="wwd-card"><img class="wwd-image" src="https://images.pexels.com/photos/3762453/pexels-photo-3762453.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500&amp;h=500&amp;fit=crop" alt="Teeth whitening treatment"><div class="wwd-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div><span class="wwd-vertical-title">Whitening</span><div class="wwd-review"><img src="images/review/review-11.png" alt="Google review"><img src="images/review/review-12.png" alt="Google review"></div><div class="wwd-info"><h3>Teeth<br>Whitening</h3></div></div>
+      <div class="wwd-card"><img class="wwd-image" src="https://images.pexels.com/photos/3762456/pexels-photo-3762456.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500&amp;h=500&amp;fit=crop" alt="Wisdom teeth extraction"><div class="wwd-icon"><i class="fa-solid fa-tooth"></i></div><span class="wwd-vertical-title">Wisdom Teeth</span><div class="wwd-review"><img src="images/review/review-01.png" alt="Google review"><img src="images/review/review-02.png" alt="Google review"></div><div class="wwd-info"><h3>Wisdom Teeth<br>Extraction</h3></div></div>
+      <div class="wwd-card"><img class="wwd-image" src="https://images.pexels.com/photos/3762456/pexels-photo-3762456.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500&amp;h=500&amp;fit=crop" alt="Laser oral surgery"><div class="wwd-icon"><i class="fa-solid fa-crosshairs"></i></div><span class="wwd-vertical-title">Laser Surgery</span><div class="wwd-review"><img src="images/review/review-03.png" alt="Google review"><img src="images/review/review-04.png" alt="Google review"></div><div class="wwd-info"><h3>Laser Oral<br>Surgery</h3></div></div>
     </div>
   </div>
 </section>
@@ -282,7 +282,7 @@
   <div class="container">
     <div class="insta-head">
       <p class="insta-sub">The work speaks louder than promises.</p>
-      <h2>The Portfolio <span class="gold">Starts Here.</span></h2>
+      <h2>Our <span class="gold">Testimonials</span></h2>
       <p class="insta-tagline">Instagram Finishes the Story.</p>
     </div>
     <div class="insta-grid">
@@ -340,7 +340,7 @@
 <section class="appt-sec" id="appointment">
   <!-- ONE background image fills entire section -->
   <div class="appt-bg">
-    <img src="https://images.pexels.com/photos/1128318/pexels-photo-1128318.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop" alt="Happy family"/>
+    <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1600&amp;q=85" alt="Smiling dental patient"/>
   </div>
   <div class="leaf-deco leaf-tl"></div>
   <div class="leaf-deco leaf-br"></div>
@@ -354,13 +354,15 @@
         <input type="tel" id="apptPhone" name="phone" placeholder="Phone Number" maxlength="10" required/>
         <select id="apptTreatment" name="treatment" required>
           <option value="" disabled selected>Select Treatment</option>
-          <option>Teeth Whitening</option>
-          <option>Braces / Alignment</option>
+          <option>Dental Implant Crowns</option>
+          <option>Prosthodontic Teeth Replacement</option>
+          <option>Braces / Aligners</option>
           <option>Dental Implants</option>
-          <option>Veneers</option>
-          <option>Gum Treatment</option>
-          <option>Smile Makeover</option>
-          <option>General Consultation</option>
+          <option>Tooth Decay / Root Canal</option>
+          <option>Teeth Whitening</option>
+          <option>Wisdom Teeth / Extraction</option>
+          <option>Orthodontic / Laser Surgery</option>
+          <option>Dentures / Veneers</option>
         </select>
         <button type="submit" class="btn-primary" id="bookBtn">Book Now <i class="fa-solid fa-arrow-right"></i></button>
       </div>
@@ -378,7 +380,7 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <a class="logo" href="#home">
-        <img src="https://img.icons8.com/color/48/tooth.png" alt="logo"/>
+        <img src="images/81585.png" alt="4S Dentistree logo"/>
         <div>
           <span class="logo-name">4S Dentistree</span>
           <span class="logo-sub">Your Smile. Our Passion</span>
