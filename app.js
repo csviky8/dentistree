@@ -32,6 +32,45 @@ $('#apptPhone').on('input', function() {
   this.value = this.value.replace(/\D/g, '').slice(0, 10);
 });
 
+/* ── Appointment form — optional dental photo upload ── */
+const apptFiles = document.getElementById('apptFiles');
+const apptPreviews = document.getElementById('apptPreviews');
+const apptUpload = document.querySelector('.appt-upload');
+const apptUploadText = document.querySelector('.appt-upload-text');
+if (apptFiles && apptPreviews) {
+  const renderApptPreviews = () => {
+    apptPreviews.innerHTML = '';
+    const files = [...apptFiles.files];
+    apptUploadText.innerHTML = files.length
+      ? `Attached ${files.length} image${files.length > 1 ? 's' : ''} <em>(optional)</em>`
+      : 'Attach dental photos <em>(optional)</em>';
+    files.forEach(file => {
+      if (!file.type.startsWith('image/')) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        const img = document.createElement('img');
+        img.src = e.target.result;
+        img.alt = file.name;
+        apptPreviews.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+  apptFiles.addEventListener('change', renderApptPreviews);
+
+  /* drag & drop onto the upload area */
+  ['dragenter', 'dragover'].forEach(ev =>
+    apptUpload.addEventListener(ev, e => { e.preventDefault(); apptUpload.classList.add('dragover'); }));
+  ['dragleave', 'drop'].forEach(ev =>
+    apptUpload.addEventListener(ev, e => { e.preventDefault(); apptUpload.classList.remove('dragover'); }));
+  apptUpload.addEventListener('drop', e => {
+    if (e.dataTransfer?.files?.length) {
+      try { apptFiles.files = e.dataTransfer.files; } catch (err) { /* older browsers: click-to-select only */ }
+      renderApptPreviews();
+    }
+  });
+}
+
 /* ── Navbar scroll ── */
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').style.boxShadow =
@@ -241,6 +280,36 @@ document.querySelectorAll('.wwd-card').forEach(card => {
     card.classList.add('wwd-active');
   });
 });
+
+/* ── Advanced Technology cards reveal ── */
+const techGrid = document.querySelector('.tech-grid');
+if (techGrid) {
+  const techObserver = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      techGrid.querySelectorAll('.tech-card').forEach((card, i) => {
+        setTimeout(() => card.classList.add('tech-visible'), i * 90);
+      });
+      techObserver.disconnect();
+    }
+  }, { threshold: .15 });
+  techObserver.observe(techGrid);
+}
+
+/* ── Services heading — word-by-word scroll reveal ── */
+const svcHead = document.querySelector('.sec-head-svc');
+if (svcHead) {
+  if (!('IntersectionObserver' in window)) {
+    svcHead.classList.add('is-revealed');
+  } else {
+    const svcHeadObserver = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        svcHead.classList.add('is-revealed');
+        svcHeadObserver.disconnect();
+      }
+    }, { threshold: .35 });
+    svcHeadObserver.observe(svcHead);
+  }
+}
 
 /* ── Responsive treatment slider autoplay ── */
 if (wwdGrid) {

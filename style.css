@@ -215,6 +215,52 @@ ul   { list-style: none; }
 .stat span   { display: block; font-size: .72rem; color: #888; }
 .stat-sep { width: 1px; height: 38px; background: var(--gold-border); margin: 0 16px; transform: scaleY(0); transform-origin: center; animation: statDivider .5s .45s ease forwards; }
 
+/* ══════════ SERVICES HEAD ANIMATION ══════════ */
+.svc-head-anim { overflow: hidden; }
+
+.svc-head-eyebrow {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; margin-bottom: 18px;
+  opacity: 0; transform: translateY(16px);
+  transition: opacity .6s .1s ease, transform .6s .1s ease;
+}
+.svc-head-line {
+  display: block; height: 1.5px; width: 0;
+  background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+  transition: width .7s .4s ease;
+  flex: 0 0 60px;
+}
+.svc-head-eyebrow i {
+  color: var(--gold); font-size: 1.1rem;
+  transform: scale(0) rotate(-180deg);
+  display: inline-block;
+  transition: transform .8s .5s cubic-bezier(.34,1.56,.64,1);
+}
+
+.svc-head-anim h2 {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity .65s .25s ease, transform .65s .25s ease;
+}
+.svc-head-anim p {
+  opacity: 0; transform: translateY(16px);
+  transition: opacity .6s .4s ease, transform .6s .4s ease;
+}
+
+.svc-head-tags {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 10px; margin-top: 20px;
+  opacity: 0; transform: translateY(12px);
+  transition: opacity .6s .55s ease, transform .6s .55s ease;
+}
+
+/* triggered state */
+.svc-head-anim.svc-head-visible .svc-head-eyebrow { opacity: 1; transform: translateY(0); }
+.svc-head-anim.svc-head-visible .svc-head-line    { width: 60px; }
+.svc-head-anim.svc-head-visible .svc-head-eyebrow i { transform: scale(1) rotate(0deg); }
+.svc-head-anim.svc-head-visible h2  { opacity: 1; transform: translateY(0); }
+.svc-head-anim.svc-head-visible p   { opacity: 1; transform: translateY(0); }
+.svc-head-anim.svc-head-visible .svc-head-tags { opacity: 1; transform: translateY(0); }
+
 /* ══════════ SERVICES ══════════ */
 .services-sec { background: #fff; }
 .tooth-watermark {
@@ -249,6 +295,91 @@ ul   { list-style: none; }
 .svc-card:nth-child(3){animation-delay:.14s}.svc-card:nth-child(4){animation-delay:.19s}
 .svc-card:nth-child(5){animation-delay:.24s}.svc-card:nth-child(6){animation-delay:.29s}
 .svc-card:nth-child(7){animation-delay:.34s}.svc-card:nth-child(8){animation-delay:.39s}
+
+/* ══════════ ADVANCED TECHNOLOGY ══════════ */
+.tech-sec { background: #fff; }
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  position: relative; z-index: 1;
+}
+.tech-card {
+  position: relative;
+  background: #fff;
+  border: 1.5px solid #f0e8d0;
+  border-radius: 16px;
+  padding: 32px 24px 24px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .6s ease, transform .6s ease, box-shadow .25s, border-color .25s;
+}
+.tech-card.tech-visible { opacity: 1; transform: translateY(0); }
+.tech-card:hover { box-shadow: 0 12px 40px rgba(184,134,11,.18); border-color: var(--gold-border); }
+.tech-card:nth-child(1){ transition-delay:.05s }
+.tech-card:nth-child(2){ transition-delay:.12s }
+.tech-card:nth-child(3){ transition-delay:.19s }
+.tech-card:nth-child(4){ transition-delay:.26s }
+.tech-card:nth-child(5){ transition-delay:.33s }
+.tech-card:nth-child(6){ transition-delay:.40s }
+
+.tech-icon-wrap {
+  position: relative;
+  width: 68px; height: 68px;
+  margin-bottom: 18px;
+  display: flex; align-items: center; justify-content: center;
+}
+.tech-icon-wrap i {
+  font-size: 1.8rem;
+  color: var(--gold);
+  position: relative; z-index: 2;
+  transition: transform .3s ease;
+}
+.tech-card:hover .tech-icon-wrap i { transform: scale(1.15) rotate(-6deg); }
+.tech-pulse {
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  background: var(--gold-pale);
+  border: 1.5px solid var(--gold-border);
+  animation: techPulse 2.6s ease-in-out infinite;
+}
+.tech-card:hover .tech-pulse { animation-duration: 1.2s; }
+@keyframes techPulse {
+  0%, 100% { transform: scale(1);   opacity: 1; }
+  50%       { transform: scale(1.18); opacity: .55; }
+}
+
+.tech-body h3 { font-size: .96rem; font-weight: 700; margin-bottom: 8px; }
+.tech-body p  { font-size: .8rem; color: var(--text); line-height: 1.65; }
+
+.tech-badge {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 4px 14px;
+  border-radius: 30px;
+  background: var(--gold-pale);
+  border: 1px solid var(--gold-border);
+  color: var(--gold);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+}
+
+/* shimmer line across top of card on hover */
+.tech-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 60%; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+  transition: left .55s ease;
+}
+.tech-card:hover::before { left: 140%; }
+
+@media (max-width: 860px) { .tech-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px)  { .tech-grid { grid-template-columns: 1fr; } }
 
 /* ══════════ DOCTOR ══════════ */
 .doctor-sec { background: var(--gold-pale); }
@@ -713,6 +844,46 @@ ul   { list-style: none; }
   font-size: .74rem; color: #555;
 }
 
+/* Footer — dual location cards */
+.footer-loc {
+  background: rgba(184,134,11,.06);
+  border: 1px solid rgba(184,134,11,.16);
+  border-left: 3px solid var(--gold);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-top: 12px;
+  transition: background .2s, transform .2s;
+}
+.footer-loc:hover { background: rgba(184,134,11,.13); transform: translateX(3px); }
+.footer-loc-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.footer-loc-head i { color: var(--gold-light); font-size: .82rem; flex-shrink: 0; }
+.footer-loc-head strong { color: #fff; font-size: .82rem; font-weight: 700; letter-spacing: .3px; }
+.footer-loc-tag {
+  margin-left: auto; font-size: .56rem; font-weight: 700; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--gold-light);
+  border: 1px solid rgba(184,134,11,.45); border-radius: 20px;
+  padding: 2px 8px; background: rgba(184,134,11,.14); flex-shrink: 0;
+}
+.footer-loc-addr {
+  display: block; color: #a89f8d; font-size: .76rem; line-height: 1.65;
+  text-decoration: none; transition: color .2s;
+}
+.footer-loc-addr:hover { color: var(--gold-light); }
+.footer-loc-meta { display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: .7rem; color: #8d8060; }
+.footer-loc-meta i { color: var(--gold); font-size: .72rem; }
+
+/* Locations row spans full footer width, cards side-by-side */
+.footer-locations {
+  grid-column: 1 / -1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  border-top: 1px solid #1e1600;
+  padding-top: 28px; margin-top: 4px;
+}
+.footer-locations > h4 { grid-column: 1 / -1; margin-bottom: 0; }
+@media (max-width: 640px) {
+  .footer-locations { grid-template-columns: 1fr; gap: 12px; }
+}
+
 /* Floating WhatsApp contact */
 .whatsapp-float {
   position: fixed;
@@ -785,6 +956,133 @@ ul   { list-style: none; }
 @media (prefers-reduced-motion: reduce) {
   .stat, .stat i, .stat-sep { animation: none; opacity: 1; transform: none; }
 }
+
+/* ══════════ SERVICES HEADING — WORD-BY-WORD SCROLL REVEAL (scoped to this block only) ══════════ */
+.sec-head-svc .word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(32px) scale(.94);
+  filter: blur(8px);
+  transition: opacity .65s ease, transform .65s cubic-bezier(.22,1,.36,1), filter .65s ease;
+  transition-delay: calc(var(--w, 0) * 90ms);
+  will-change: opacity, transform, filter;
+}
+.sec-head-svc.is-revealed .word { opacity: 1; transform: none; filter: blur(0); }
+
+/* Gold shimmer sweep on "Dental Care" */
+.sec-head-svc .word.gold {
+  background: linear-gradient(110deg, var(--gold-light) 35%, #f7dd8a 50%, var(--gold-light) 65%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.sec-head-svc.is-revealed .word.gold { animation: svcGoldShimmer 3.6s ease-in-out 1.3s infinite; }
+@keyframes svcGoldShimmer {
+  0%, 100% { background-position: 0% 0; }
+  50%      { background-position: 100% 0; }
+}
+
+/* Gold shimmer utility — shared by the other section headings */
+.gold-shimmer {
+  background: linear-gradient(110deg, var(--gold-light) 35%, #f7dd8a 50%, var(--gold-light) 65%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: svcGoldShimmer 3.6s ease-in-out infinite;
+}
+
+/* Paragraph fades up after the heading settles */
+.sec-head-svc p {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .8s ease .6s, transform .8s cubic-bezier(.22,1,.36,1) .6s;
+}
+.sec-head-svc.is-revealed p { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sec-head-svc .word, .sec-head-svc p { transition: none; opacity: 1; transform: none; filter: none; }
+  .sec-head-svc .word.gold, .gold-shimmer { animation: none; }
+}
+
+/* ══════════ SERVICE CARD ANIMATED SVG ICONS (GIF-style line icons) ══════════ */
+.svc-icon .svi {
+  width: 58%; height: 58%; display: block;
+  fill: none; stroke: currentColor;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  overflow: visible;
+}
+.svc-icon .svi-acc { stroke: var(--gold-light); transition: stroke .25s; }
+.svc-card:hover .svc-icon .svi-acc { stroke: #fff; }
+.svi [class^="svi-"], .svi [class*=" svi-"] { transform-box: fill-box; }
+
+.svi-float { animation: sviFloat 3.2s ease-in-out infinite; }
+.svi-bite  { animation: sviBite 1.9s ease-in-out infinite; }
+.svi-seat  { animation: sviSeat 2.4s ease-in-out infinite; }
+.svi-pulse { animation: sviPulse 1.9s ease-in-out infinite; }
+.svi-flow  { stroke-dasharray: 3 4; animation: sviFlow 1.1s linear infinite; }
+.svi-snapL { transform-origin: 50% 0; animation: sviSnapL 1.7s ease-in-out infinite; }
+.svi-snapR { transform-origin: 50% 0; animation: sviSnapR 1.7s ease-in-out infinite; }
+.svi-tw    { transform-origin: center; animation: sviTwinkle 1.8s ease-in-out infinite; }
+
+@keyframes sviFloat   { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-1.6px); } }
+@keyframes sviBite    { 0%,100% { transform: translateY(0); } 50% { transform: translateY(2.2px); } }
+@keyframes sviSeat    { 0%,100% { transform: translateY(-1.6px); } 60% { transform: translateY(0); } }
+@keyframes sviTwinkle { 0%,100% { transform: scale(.45); opacity: .2; } 50% { transform: scale(1); opacity: 1; } }
+@keyframes sviFlow    { to { stroke-dashoffset: -7; } }
+@keyframes sviPulse   { 0%,100% { opacity: .3; } 50% { opacity: 1; } }
+@keyframes sviSnapL   { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(5deg); } }
+@keyframes sviSnapR   { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(-5deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .svi [class^="svi-"], .svi [class*=" svi-"] { animation: none !important; }
+}
+
+/* ── Same animated icons inside What-We-Do cards ── */
+.wwd-icon .svi {
+  width: 32px; height: 32px; display: block;
+  fill: none; stroke: currentColor;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  overflow: visible;
+}
+.wwd-icon .svi-acc { stroke: var(--gold-light); transition: stroke .16s ease; }
+.wwd-card:hover .wwd-icon .svi-acc { stroke: var(--gold); }
+
+@media (max-width: 860px) {
+  .wwd-icon .svi { width: 14px; height: 14px; stroke-width: 2.6; }
+  .wwd-icon .svi-acc, .wwd-card:hover .wwd-icon .svi-acc { stroke: #fff; }
+}
+
+/* ══════════ APPOINTMENT FORM — OPTIONAL PHOTO UPLOAD ══════════ */
+.appt-upload-row { flex: 1 1 100%; display: flex; flex-direction: column; gap: 8px; }
+.appt-upload {
+  display: inline-flex; align-items: center; gap: 10px; cursor: pointer;
+  padding: 12px 16px; border: 1.5px dashed var(--gold-border); border-radius: 8px;
+  background: rgba(255,255,255,.65); font-size: .84rem; color: var(--text);
+  transition: border-color .2s, background .2s;
+}
+.appt-upload:hover, .appt-upload.dragover { border-color: var(--gold); background: #fffdf7; }
+.appt-upload i { color: var(--gold); font-size: 1.05rem; }
+.appt-upload em { font-style: normal; color: #999; font-size: .78rem; }
+.appt-previews { display: flex; gap: 8px; flex-wrap: wrap; }
+.appt-previews img {
+  width: 46px; height: 46px; object-fit: cover; border-radius: 8px;
+  border: 1.5px solid var(--gold-border);
+}
+
+/* ── Same animated icons inside Before/After ("Real Smiles") cards ── */
+.ba-icon .svi {
+  width: 26px; height: 26px; display: block;
+  fill: none; stroke: currentColor;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  overflow: visible;
+}
+.ba-icon .svi-acc { stroke: var(--gold-light); }
+
+/* Self-drawing smile (Smile Makeover icon) */
+.svi-draw { stroke-dasharray: 16; animation: sviDraw 2.2s ease infinite; }
+@keyframes sviDraw { 0% { stroke-dashoffset: 16; } 55%, 100% { stroke-dashoffset: 0; } }
 
 /* ══════════ RESPONSIVE ══════════ */
 @media (max-width: 1024px) {
