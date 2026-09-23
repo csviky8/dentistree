@@ -1,36 +1,38 @@
-/* ── jQuery Validation ── */
-$.validator.addMethod('indianPhone', function(v) {
-  return /^[6-9]\d{9}$/.test(v);
-}, 'Enter a valid 10-digit Indian mobile number.');
+/* ── jQuery Validation (guarded so a CDN failure can never break the rest of the page) ── */
+if (window.jQuery && window.jQuery.validator) {
+  $.validator.addMethod('indianPhone', function(v) {
+    return /^[6-9]\d{9}$/.test(v);
+  }, 'Enter a valid 10-digit Indian mobile number.');
 
-$('#apptForm').on('submit', function() {
-  if ($(this).valid()) {
-    const loader = $('#bookLoader');
-    loader.css('display', 'flex');
-  }
-});
+  $('#apptForm').on('submit', function() {
+    if ($(this).valid()) {
+      const loader = $('#bookLoader');
+      loader.css('display', 'flex');
+    }
+  });
 
-$('#apptForm').validate({
-  rules: {
-    name:      { required: true, minlength: 2 },
-    phone:     { required: true, indianPhone: true },
-    treatment: { required: true }
-  },
-  messages: {
-    name:      { required: 'Name is required.', minlength: 'Enter at least 2 characters.' },
-    phone:     { required: 'Phone number is required.' },
-    treatment: { required: 'Please select a treatment.' }
-  },
-  errorClass: 'error',
-  validClass: 'valid',
-  errorPlacement: function(error, element) {
-    error.insertAfter(element);
-  }
-});
+  $('#apptForm').validate({
+    rules: {
+      name:      { required: true, minlength: 2 },
+      phone:     { required: true, indianPhone: true },
+      treatment: { required: true }
+    },
+    messages: {
+      name:      { required: 'Name is required.', minlength: 'Enter at least 2 characters.' },
+      phone:     { required: 'Phone number is required.' },
+      treatment: { required: 'Please select a treatment.' }
+    },
+    errorClass: 'error',
+    validClass: 'valid',
+    errorPlacement: function(error, element) {
+      error.insertAfter(element);
+    }
+  });
 
-$('#apptPhone').on('input', function() {
-  this.value = this.value.replace(/\D/g, '').slice(0, 10);
-});
+  $('#apptPhone').on('input', function() {
+    this.value = this.value.replace(/\D/g, '').slice(0, 10);
+  });
+}
 
 /* ── Appointment form — optional dental photo upload ── */
 const apptFiles = document.getElementById('apptFiles');
@@ -253,14 +255,20 @@ if (videoModal && dentalVideo) {
     videoModal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
   };
-  document.querySelectorAll('.insta-item').forEach(item => {
-    item.addEventListener('click', event => {
-      event.preventDefault();
-      videoModal.classList.add('is-open');
-      videoModal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      dentalVideo.play().catch(() => {});
-    });
+  /* open whichever testimonial video was clicked (event delegation — works even if content is re-rendered) */
+  document.addEventListener('click', event => {
+    const item = event.target.closest('.insta-item');
+    if (!item || !item.dataset.videoSrc) return;
+    event.preventDefault();
+    dentalVideo.src = item.dataset.videoSrc;
+    dentalVideo.load();
+    thumbVideos().forEach(v => v.pause());
+    videoModal.classList.add('is-open');
+    videoModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    const tryPlay = () => dentalVideo.play().catch(() => {});
+    if (dentalVideo.readyState >= 2) tryPlay();
+    else dentalVideo.addEventListener('loadeddata', tryPlay, { once: true });
   });
   videoModal.querySelectorAll('[data-video-close]').forEach(control => control.addEventListener('click', closeVideo));
   document.addEventListener('keydown', event => {
@@ -268,6 +276,21 @@ if (videoModal && dentalVideo) {
   });
 }
 
+/* ── Testimonial video thumbnails — muted autoplay while in view ── */
+function thumbVideos() {
+  return document.querySelectorAll('.insta-thumb');
+}
+if ('IntersectionObserver' in window) {
+  const thumbObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.play().catch(() => {});
+      else entry.target.pause();
+    });
+  }, { threshold: .25 });
+  thumbVideos().forEach(vid => thumbObserver.observe(vid));
+} else {
+  thumbVideos().forEach(vid => vid.play().catch(() => {}));
+}
 /* Touch-friendly image zoom for the What We Do cards. */
 document.querySelectorAll('.wwd-card').forEach(card => {
   card.tabIndex = 0;

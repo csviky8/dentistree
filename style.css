@@ -412,7 +412,7 @@ ul   { list-style: none; }
 
 /* ══════════ BEFORE / AFTER ══════════ */
 .ba-sec { background: #f5f0e8; }
-.ba-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.ba-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; align-items: start; }
 
 .ba-card {
   background: #fff; border-radius: 18px;
@@ -422,14 +422,14 @@ ul   { list-style: none; }
 .ba-card:hover { transform: translateY(-5px); box-shadow: 0 14px 40px rgba(0,0,0,.15); }
 
 .ba-slider {
-  position: relative; height: 240px;
+  position: relative; height: 340px;
   overflow: hidden; cursor: col-resize; user-select: none;
 }
 /* BEFORE: left image */
 .ba-img-before {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: cover; object-position: center top;
+  object-fit: cover; object-position: center 30%;
   display: block; z-index: 1;
 }
 /* AFTER clip */
@@ -440,7 +440,7 @@ ul   { list-style: none; }
 .ba-img-after {
   position: absolute; top: 0; left: 0;
   height: 100%;
-  object-fit: cover; object-position: center top;
+  object-fit: cover; object-position: center 30%;
   display: block;
   width: var(--slider-w, 100%);
 }
@@ -482,7 +482,7 @@ ul   { list-style: none; }
 .ba-info p { font-size: .76rem; color: #888; margin: 0; }
 
 @media (max-width: 1024px) { .ba-grid { grid-template-columns: repeat(2,1fr); } }
-@media (max-width: 600px)  { .ba-grid { grid-template-columns: 1fr; } .ba-slider { height: 200px; } }
+@media (max-width: 600px)  { .ba-grid { grid-template-columns: 1fr; } .ba-slider { height: 280px; } }
 
 /* ══════════ TESTIMONIALS ══════════ */
 .testi-sec { background: #fff; }
@@ -587,7 +587,8 @@ ul   { list-style: none; }
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  height: 160px !important;
+  height: 300px;
+  background: #000;
   display: block;
   cursor: pointer;
   opacity: 0;
@@ -597,7 +598,10 @@ ul   { list-style: none; }
 .insta-item.insta-visible { opacity: 1; transform: none; }
 .insta-item.insta-visible:hover { box-shadow: 0 12px 28px rgba(184,134,11,.28); }
 .insta-thumb {
+  position: absolute; inset: 0;
   width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  pointer-events: none;
   transition: transform .55s cubic-bezier(.2,.75,.25,1), filter .35s ease;
 }
 .insta-item:hover .insta-thumb, .insta-item:focus-visible .insta-thumb { transform: scale(1.08); filter: saturate(1.15); }
@@ -637,7 +641,7 @@ ul   { list-style: none; }
 .video-modal-backdrop { position: absolute; inset: 0; background: rgba(7,7,7,.82); backdrop-filter: blur(8px); }
 .video-modal-panel { position: relative; z-index: 1; width: min(820px, 100%); padding: 12px; background: #161616; border: 1px solid rgba(255,255,255,.16); border-radius: 14px; box-shadow: 0 24px 80px rgba(0,0,0,.45); transform: translateY(24px) scale(.96); transition: transform .35s cubic-bezier(.2,.8,.2,1); }
 .video-modal.is-open .video-modal-panel { transform: none; }
-.video-modal video { display: block; width: 100%; max-height: 45vh; aspect-ratio: 16 / 9; object-fit: cover; background: #000; border-radius: 8px; }
+.video-modal video { display: block; width: 100%; max-height: 78vh; object-fit: contain; background: #000; border-radius: 8px; }
 .video-modal-close { position: absolute; top: -14px; right: -14px; z-index: 2; width: 38px; height: 38px; border: 2px solid #fff; border-radius: 50%; background: var(--gold); color: #fff; cursor: pointer; font-size: 1rem; transition: transform .2s, background .2s; }
 .video-modal-close:hover { transform: rotate(90deg) scale(1.08); background: var(--gold-hover); }
 .video-modal-caption { color: #ddd; font-size: .82rem; text-align: center; padding: 10px 4px 2px; }
@@ -664,7 +668,7 @@ ul   { list-style: none; }
 @media (max-width: 600px) {
   .svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(4, auto); grid-auto-flow: row; }
   .insta-grid { grid-template-columns: repeat(3, 1fr); gap: 5px; margin-bottom: 28px; }
-  .insta-item { border-radius: 6px; height: 190px; }
+  .insta-item { border-radius: 6px; height: 220px; }
   .insta-play { top: 6px; right: 6px; width: 25px; height: 25px; font-size: .72rem; }
   .insta-overlay { padding: 7px; }
   .insta-overlay span { font-size: .56rem; line-height: 1.2; }
