@@ -105,7 +105,7 @@
 
       <div class="hero-right">
         <img src="images/89342.jpg" alt="Beautiful young smiling woman dental" />
-        <!-- <div class="hero-script">Smile<br>Confidently<br>Always</div> -->
+        <div class="hero-script">Smile<br>Confidently<br>Always</div>
       </div>
 
     </div>
@@ -645,10 +645,9 @@
     <div class="appt-left">
       <p class="appt-eyebrow">Ready For A Healthier Smile?</p>
       <h2 class="appt-title">Book Your Appointment <span class="gold gold-shimmer">Today</span></h2>
-      <form class="appt-form" id="apptForm" action="https://api.web3forms.com/submit" method="POST"
-        enctype="multipart/form-data" novalidate>
+      <form class="appt-form" id="apptForm" action="partials/book.php" method="POST" enctype="multipart/form-data"
+        method="POST" enctype="multipart/form-data" novalidate>
         <div class="appt-fields">
-          <input type="hidden" name="access_key" value="a6692143-8360-4df7-a1ce-86cb31f3bfa4">
           <input type="text" id="apptName" name="name" placeholder="Your Name" required />
           <input type="tel" id="apptPhone" name="phone" placeholder="Phone Number" maxlength="10" required />
           <select id="apptTreatment" name="treatment" required>
@@ -668,7 +667,7 @@
               <i class="fa-solid fa-camera"></i>
               <span class="appt-upload-text">Attach dental photos <em>(optional)</em></span>
             </label>
-            <input type="file" id="apptFiles" name="attachment" accept="image/*" multiple hidden />
+            <input type="file" id="apptFiles" name="files[]" accept="image/*" multiple hidden />
             <div class="appt-previews" id="apptPreviews"></div>
           </div>
           <button type="submit" class="btn-primary" id="bookBtn">Book Now <i
@@ -726,7 +725,7 @@
         <h4>Contact Us</h4>
         <ul>
           <li><i class="fa-solid fa-phone"></i> +91 94444 06704</li>
-          <!-- <li><i class="fa-solid fa-envelope"></i> info@4sdentistree.in</li> -->
+          <li><i class="fa-solid fa-envelope"></i> info@4sdentistree.in</li>
         </ul>
       </div>
 
@@ -735,7 +734,7 @@
         <div class="footer-loc">
           <div class="footer-loc-head">
             <i class="fa-solid fa-location-dot"></i>
-            <strong>Mogappair East</strong>
+            <strong>Main Clinic — Mogappair East</strong>
             <!-- <span class="footer-loc-tag">Main</span> -->
           </div>
           <a class="footer-loc-addr" href="https://share.google/Ab0JxyMXXfcFMGNBa" target="_blank" rel="noopener">
@@ -747,7 +746,7 @@
         <div class="footer-loc">
           <div class="footer-loc-head">
             <i class="fa-solid fa-location-dot"></i>
-            <strong>Golden George Nagar</strong>
+            <strong>Branch — Golden George Nagar</strong>
             <span class="footer-loc-tag">Coming Soon</span>
           </div>
           <a class="footer-loc-addr"
@@ -795,60 +794,6 @@
       }
     }
   </style>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const apptForm = document.getElementById('apptForm');
-      const bookLoader = document.getElementById('bookLoader');
-
-      if (apptForm) {
-        apptForm.addEventListener('submit', function (e) {
-          e.preventDefault();
-
-          // 1. Show the booking loader overlay
-          if (bookLoader) {
-            bookLoader.style.display = 'flex';
-          }
-
-          // 2. Build Form Data for Web3Forms
-          const formData = new FormData(apptForm);
-
-          // Add Custom Dynamic Subject
-          const patientName = formData.get('name') || 'Patient';
-          formData.set('subject', `${patientName} booked a dental appointment`);
-          const redirectParams = new URLSearchParams({
-            name: formData.get('name') || '',
-            phone: formData.get('phone') || '',
-            treatment: formData.get('treatment') || ''
-          });
-
-          // 3. Send POST Request to Web3Forms API
-          fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json'
-            },
-            body: formData
-          })
-            .then(async (response) => {
-              const result = await response.json();
-
-              if (response.ok && result.success) {
-                // ⚡ 4. REDIRECT TO YOUR THANK YOU PAGE ON SUCCESS
-                window.location.href = `thankyou.php?${redirectParams.toString()}`;
-              } else {
-                if (bookLoader) bookLoader.style.display = 'none';
-                alert(result.message || 'Submission failed. Please check your Web3Forms access key.');
-              }
-            })
-            .catch((error) => {
-              console.error('Web3Forms Error:', error);
-              if (bookLoader) bookLoader.style.display = 'none';
-              alert('Something went wrong sending your appointment request. Please try again.');
-            });
-        });
-      }
-    });
-  </script>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.20.0/dist/jquery.validate.min.js"></script>
