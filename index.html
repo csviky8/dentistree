@@ -834,7 +834,7 @@
 
               if (response.ok && result.success) {
                 // ⚡ 4. REDIRECT TO YOUR THANK YOU PAGE ON SUCCESS
-                window.location.href = `thankyou.php?${redirectParams.toString()}`;
+                window.location.href = `https://dental.4sdentistree.in/thankyou.html?${redirectParams.toString()}`;
               } else {
                 if (bookLoader) bookLoader.style.display = 'none';
                 alert(result.message || 'Submission failed. Please check your Web3Forms access key.');

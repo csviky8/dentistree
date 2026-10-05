@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="images/81588.png" />
+  <title>Thank You - 4S Dentistree</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --gold: #b8860b; --gold-light: #d4a017; --gold-pale: #fdf6e3; --gold-border: #e8d5a0; --dark: #1c1c1c; --text: #555; }
+    body { min-height: 100vh; font-family: 'Inter', sans-serif; color: var(--dark); background: linear-gradient(135deg, #f5ead6, #fdf3e0 48%, #fef9f0); }
+    a { color: inherit; text-decoration: none; }
+    .page { min-height: 100vh; display: flex; flex-direction: column; overflow: hidden; position: relative; }
+    .page::before { content: ''; position: fixed; inset: 0 0 0 auto; width: 40%; background: linear-gradient(90deg, #fdf3e0, transparent 45%), url('https://images.pexels.com/photos/3762453/pexels-photo-3762453.jpeg?auto=compress&cs=tinysrgb&w=900&h=1200&fit=crop') center/cover; pointer-events: none; }
+    header { position: relative; z-index: 1; display: flex; align-items: center; gap: 12px; padding: 20px 5vw; }
+    header img { width: 42px; }
+    .brand { color: var(--gold); font: 700 1.1rem 'Playfair Display', serif; }
+    .tagline { color: #888; font-size: .68rem; }
+    main { position: relative; z-index: 1; flex: 1; display: grid; place-items: center; padding: 28px 20px 48px; }
+    .confirmation { width: min(100%, 540px); padding: 38px 42px 30px; text-align: center; background: rgba(255,255,255,.97); border: 1px solid var(--gold-border); border-radius: 18px; box-shadow: 0 12px 60px rgba(184,134,11,.14), 0 2px 16px rgba(0,0,0,.06); }
+    .check { width: 64px; height: 64px; margin: 0 auto 16px; display: grid; place-items: center; border-radius: 50%; color: #fff; font-size: 1.5rem; background: linear-gradient(135deg, #c9960e, var(--gold)); box-shadow: 0 6px 24px rgba(184,134,11,.3); }
+    .eyebrow { margin-bottom: 8px; color: var(--gold); font-size: .68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+    h1 { font: 700 2rem/1.2 'Playfair Display', serif; }
+    #patientName { color: var(--gold-light); }
+    .intro { margin: 14px 0 20px; color: var(--text); font-size: .86rem; line-height: 1.7; }
+    .summary { display: grid; grid-template-columns: 1fr 1fr; text-align: left; margin-bottom: 20px; padding: 16px 18px; background: #fffdf7; border: 1px solid var(--gold-border); border-radius: 10px; }
+    .summary > div + div { padding-left: 16px; border-left: 1px solid var(--gold-border); }
+    .label { margin-bottom: 4px; color: #999; font-size: .62rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+    .value { overflow-wrap: anywhere; font-size: .86rem; font-weight: 700; }
+    .actions { display: flex; gap: 10px; margin-bottom: 18px; }
+    .actions a { flex: 1; display: flex; justify-content: center; align-items: center; gap: 8px; padding: 13px 12px; border-radius: 8px; font-size: .8rem; font-weight: 700; }
+    .whatsapp { color: #fff; background: var(--gold); }
+    .call { border: 1px solid var(--gold-border); }
+    .back { color: #888; font-size: .78rem; }
+    .back:hover { color: var(--gold); }
+    .next { position: relative; z-index: 1; padding: 24px 5vw; text-align: center; background: rgba(255,255,255,.82); border-top: 1px solid var(--gold-border); }
+    .next h2 { margin-bottom: 16px; font: 600 1.3rem 'Playfair Display', serif; }
+    .steps { display: flex; justify-content: center; gap: 36px; flex-wrap: wrap; }
+    .step { display: flex; align-items: flex-start; gap: 10px; max-width: 220px; text-align: left; }
+    .number { flex: 0 0 30px; height: 30px; display: grid; place-items: center; border: 1px solid var(--gold-border); border-radius: 50%; color: var(--gold); background: var(--gold-pale); font-size: .76rem; font-weight: 700; }
+    .step strong { display: block; margin: 2px 0 4px; font-size: .8rem; }
+    .step p { color: #888; font-size: .72rem; line-height: 1.5; }
+    footer { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 5vw; color: var(--gold-light); background: #120d00; font-size: .78rem; }
+    footer span:last-child { font: italic .9rem 'Playfair Display', serif; text-align: right; }
+    @media (max-width: 700px) {
+      .page::before { display: none; }
+      .confirmation { padding: 30px 20px 24px; }
+      h1 { font-size: 1.75rem; }
+      .actions { flex-direction: column; }
+      .steps { gap: 18px; }
+      footer { flex-direction: column; text-align: center; }
+      footer span:last-child { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <img src="images/81588.png" alt="4S Dentistree logo" />
+      <div><div class="brand">4S Dentistree</div><div class="tagline">Your Smile. Our Passion</div></div>
+    </header>
+
+    <main>
+      <section class="confirmation" aria-labelledby="thankyouTitle">
+        <div class="check" aria-hidden="true"><i class="fa-solid fa-check"></i></div>
+        <p class="eyebrow">Request Received</p>
+        <h1 id="thankyouTitle">Thank You,<br /><span id="patientName">Patient</span>!</h1>
+        <p class="intro">Your consultation request has been received. Our clinical coordinator will reach out to you within a few hours to arrange your appointment with <strong>Dr. Swapna Sreenivasagan.</strong></p>
+        <div class="summary">
+          <div><div class="label">Procedure</div><div class="value" id="patientTreatment">Consultation</div></div>
+          <div><div class="label">Contact Phone</div><div class="value" id="patientPhone">Not provided</div></div>
+        </div>
+        <div class="actions">
+          <a id="whatsappLink" class="whatsapp" href="https://wa.me/919444406704" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Confirm via WhatsApp</a>
+          <a class="call" href="tel:+919444406704"><i class="fa-solid fa-phone"></i> Call Clinic</a>
+        </div>
+        <a class="back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Back to Homepage</a>
+      </section>
+    </main>
+
+    <section class="next">
+      <h2>What Happens Next?</h2>
+      <div class="steps">
+        <div class="step"><div class="number">1</div><div><strong>Coordinator Review</strong><p>Our team reviews your procedure interest with care and confidentiality.</p></div></div>
+        <div class="step"><div class="number">2</div><div><strong>Quick Callback</strong><p>We confirm a convenient date and time at your preferred Chennai centre.</p></div></div>
+        <div class="step"><div class="number">3</div><div><strong>Personal Consultation</strong><p>Receive a personalized evaluation and treatment plan from our dental team.</p></div></div>
+      </div>
+    </section>
+
+    <footer><span>Thank you for choosing 4S Dentistree!<br />© 2026 4S Dentistree. All rights reserved.</span><span>Healthy Smiles<br />Happier Families</span></footer>
+  </div>
+  <script>
+    const submittedDetails = new URLSearchParams(window.location.search);
+    const patientName = submittedDetails.get('name') || 'Patient';
+    const patientPhone = submittedDetails.get('phone') || 'Not provided';
+    const patientTreatment = submittedDetails.get('treatment') || 'Consultation';
+
+    document.getElementById('patientName').textContent = patientName;
+    document.getElementById('patientPhone').textContent = patientPhone;
+    document.getElementById('patientTreatment').textContent = patientTreatment;
+
+    const whatsappMessage = new URLSearchParams({
+      text: `Hi 4S Dentistree! I just booked an appointment.\nName: ${patientName}\nTreatment: ${patientTreatment}\nPhone: ${patientPhone}\nPlease confirm my appointment.`
+    });
+    document.getElementById('whatsappLink').href = `https://wa.me/919444406704?${whatsappMessage.toString()}`;
+  </script>
+</body>
+</html>
