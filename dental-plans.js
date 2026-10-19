@@ -1,16 +1,21 @@
 const plans = [
-  { id: 'silver', title: 'Silver', label: 'PLAN 1', price: 1200, symbol: '🥉', benefits: ['2 Dental consultations', 'Diagnostic intraoral radiographs', 'Full-mouth X-ray'] },
-  { id: 'gold', title: 'Gold', label: 'PLAN 4', price: 8000, symbol: '🥇', benefits: ['Dental consultation', 'Full-mouth X-ray', 'Intraoral scan with a personalised oral hygiene report', '2 scaling and polishing sessions per year'] },
-  { id: 'platinum', title: 'Platinum', label: 'PLAN 5', price: 15000, symbol: '💎', benefits: ['4 dental check-ups per year at no additional cost', 'Full-mouth X-ray', 'Intraoral scan with a personalised oral hygiene report', '2 scaling and polishing sessions per year', 'Flat ₹10,000 discount on Invisalign treatment'] },
+  { id: 'silver', title: 'Silver', price: 1200, benefits: ['2 Dental consultations', 'Diagnostic intraoral radiographs', 'Full-mouth X-ray'] },
+  { id: 'gold', title: 'Gold', price: 8000, benefits: ['Dental consultation', 'Full-mouth X-ray', 'Intraoral scan with a personalised oral hygiene report', '2 scaling and polishing sessions per year'] },
+  { id: 'platinum', title: 'Platinum', price: 15000, benefits: ['4 dental check-ups per year at no additional cost', 'Full-mouth X-ray', 'Intraoral scan with a personalised oral hygiene report', '2 scaling and polishing sessions per year', 'Flat ₹10,000 discount on Invisalign treatment'] },
   { id: 'kids', title: '4S Kids’', label: 'SMILE GROWTH PLAN', price: 10000, symbol: '🧒', tagline: 'Small Smiles. Healthy Habits. Growing Confidence.', description: 'A proactive dental care plan designed to protect your child’s teeth, identify developing orthodontic problems early, and support healthy dental and jaw development.', benefits: ['Regular Dental & Orthodontic Screening', 'Preventive Dental Care', 'Habit Intervention & Growth Guidance', 'Exclusive Early Orthodontic Care Benefits'] },
   { id: 'senior', title: '4S Senior', label: 'SMILE CARE PLAN', price: 15000, symbol: '👨‍🦳', tagline: 'Healthy Teeth. Comfortable Smiles. Every Stage of Life.', description: 'A preventive dental care membership designed for adults aged 50 and above, helping you protect your natural teeth, manage sensitivity, and maintain a healthy, confident smile.', benefits: ['Regular Dental Screening', 'Sensitivity & Preventive Care', 'Professional Cleaning', 'Exclusive Dental Treatment Benefits'] }
 ];
 const money = value => '₹' + value.toLocaleString('en-IN');
-const fullTitle = plan => ['kids', 'senior'].includes(plan.id) ? `${plan.title} ${plan.label}` : `${plan.label}: ${plan.title}`;
+const fullTitle = plan => ['kids', 'senior'].includes(plan.id) ? `${plan.title} ${plan.label}` : plan.title;
+function planIcon(plan, placement) {
+  if (plan.symbol) return plan.symbol;
+  const gradientId = `metal-${plan.id}-${placement}`;
+  return `<svg class="membership-icon membership-icon-${plan.id}" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><defs><linearGradient id="${gradientId}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" class="metal-light"/><stop offset=".48" class="metal-middle"/><stop offset="1" class="metal-dark"/></linearGradient></defs><circle cx="32" cy="32" r="30" fill="url(#${gradientId})" stroke="white" stroke-opacity=".8" stroke-width="2"/><circle cx="32" cy="32" r="25" fill="none" stroke="white" stroke-opacity=".45"/><path d="M21 17c-8 0-9 9-6 16 3 6 2 16 7 17 4 1 4-14 10-14s6 15 10 14c5-1 4-11 7-17 3-7 2-16-6-16-5 0-7 3-11 3s-6-3-11-3Z" fill="white" fill-opacity=".94"/><path d="m39 10 1.5 4.5L45 16l-4.5 1.5L39 22l-1.5-4.5L33 16l4.5-1.5Z" fill="white"/></svg>`;
+}
 const benefitsHTML = plan => plan.benefits.map(benefit => `<li><span aria-hidden="true">✓</span>${benefit}</li>`).join('');
 document.getElementById('planGrid').innerHTML = plans.map(plan => `
   <article class="plan-card" data-theme="${plan.id}">
-    <header><span class="plan-symbol" aria-hidden="true">${plan.symbol}</span><h2>${['kids', 'senior'].includes(plan.id) ? `${plan.title}<small>${plan.label}</small>` : `<small>${plan.label}</small>${plan.title}`}</h2></header>
+    <header><span class="plan-symbol" aria-hidden="true">${planIcon(plan, 'card')}</span><h2>${['kids', 'senior'].includes(plan.id) ? `${plan.title}<small>${plan.label}</small>` : plan.title}</h2></header>
     <div class="plan-card-body"><div class="fee"><span>Membership Fee</span><strong>${money(plan.price)}</strong></div>
     ${plan.tagline ? `<p class="plan-tagline">${plan.tagline}</p>` : '<span class="card-tooth" aria-hidden="true">🦷</span>'}
     <ul>${benefitsHTML(plan)}</ul>
@@ -59,7 +64,7 @@ function updatePlan(id) {
   document.getElementById('enquiryPanel').dataset.theme = id;
   document.getElementById('dialogTitle').textContent = fullTitle(plan);
   document.getElementById('dialogPrice').textContent = money(plan.price);
-  document.getElementById('dialogSymbol').textContent = plan.symbol;
+  document.getElementById('dialogSymbol').innerHTML = planIcon(plan, 'dialog');
   document.getElementById('dialogBenefits').innerHTML = benefitsHTML(plan);
   status.textContent = '';
 }

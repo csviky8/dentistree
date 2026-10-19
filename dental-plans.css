@@ -108,6 +108,12 @@
 }
 
 [hidden],.form-honeypot { display:none!important; }
+.membership-icon { display:block; width:1.1em; height:1.1em; --metal-light:#f5f8fc; --metal-middle:#a8b6c8; --metal-dark:#667c99; }
+.membership-icon-gold { --metal-light:#fff1a3; --metal-middle:#edb82d; --metal-dark:#b57808; }
+.membership-icon-platinum { --metal-light:#efffff; --metal-middle:#87cddd; --metal-dark:#426ea9; }
+.metal-light { stop-color:var(--metal-light); }
+.metal-middle { stop-color:var(--metal-middle); }
+.metal-dark { stop-color:var(--metal-dark); }
 .enquiry-panel.is-confirmed { border-top-color:#b8860b; background:linear-gradient(135deg,#fffaf0,white 55%); }
 .is-confirmed .enquiry-header,.is-confirmed .dialog-benefits { display:none; }
 .plan-confirmation { text-align:center; padding:20px 0 4px; }
