@@ -4,16 +4,9 @@ if (window.jQuery && window.jQuery.validator) {
     return /^[6-9]\d{9}$/.test(v);
   }, 'Enter a valid 10-digit Indian mobile number.');
 
-  $('#apptForm').on('submit', function() {
-    if ($(this).valid()) {
-      const loader = $('#bookLoader');
-      loader.css('display', 'flex');
-    }
-  });
-
   $('#apptForm').validate({
     rules: {
-      name:      { required: true, minlength: 2 },
+      name:      { required: true, minlength: 2, normalizer: function(value) { return value.trim(); } },
       phone:     { required: true, indianPhone: true },
       treatment: { required: true }
     },

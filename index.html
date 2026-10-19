@@ -649,8 +649,8 @@
         enctype="multipart/form-data" novalidate>
         <div class="appt-fields">
           <input type="hidden" name="access_key" value="a6692143-8360-4df7-a1ce-86cb31f3bfa4">
-          <input type="text" id="apptName" name="name" placeholder="Your Name" required />
-          <input type="tel" id="apptPhone" name="phone" placeholder="Phone Number" maxlength="10" required />
+          <input type="text" id="apptName" name="name" placeholder="Your Name" minlength="2" required />
+          <input type="tel" id="apptPhone" name="phone" placeholder="Phone Number" inputmode="numeric" pattern="[6-9][0-9]{9}" maxlength="10" required />
           <select id="apptTreatment" name="treatment" required>
             <option value="" disabled selected>Select Treatment</option>
             <option>Dental Implant Crowns</option>
@@ -774,7 +774,7 @@
     <a href="#appointment" class="quick-action"><i
         class="fa-regular fa-calendar-check"></i><span>Book<br>Appointment</span></a>
     <a href="#contact" class="quick-action"><i class="fa-solid fa-location-dot"></i><span>Find<br>Clinic</span></a>
-    <a href="#services" class="quick-action"><i class="fa-solid fa-tooth"></i><span>Dental<br>Health Plan</span></a>
+    <a href="dental-plans.html" class="quick-action"><i class="fa-solid fa-tooth"></i><span>Dental<br>Health Plan</span></a>
     <a href="tel:+919444406704" class="quick-action"><i
         class="fa-solid fa-phone-volume"></i><span>Instant<br>Callback</span></a>
   </nav>
@@ -799,10 +799,27 @@
     document.addEventListener('DOMContentLoaded', function () {
       const apptForm = document.getElementById('apptForm');
       const bookLoader = document.getElementById('bookLoader');
+      const bookButton = document.getElementById('bookBtn');
+      let bookingInProgress = false;
 
       if (apptForm) {
         apptForm.addEventListener('submit', function (e) {
           e.preventDefault();
+
+          if (bookingInProgress) return;
+          const nameInput = apptForm.elements.namedItem('name');
+          const phoneInput = apptForm.elements.namedItem('phone');
+          const treatmentInput = apptForm.elements.namedItem('treatment');
+          nameInput.value = nameInput.value.trim();
+          phoneInput.value = phoneInput.value.trim();
+          nameInput.setCustomValidity(nameInput.value.length >= 2 ? '' : 'Enter your name (at least 2 characters).');
+          phoneInput.setCustomValidity(/^[6-9]\d{9}$/.test(phoneInput.value) ? '' : 'Enter a valid 10-digit Indian mobile number.');
+          treatmentInput.setCustomValidity(treatmentInput.value ? '' : 'Please select a treatment.');
+          // This handler owns the AJAX request, so validation must gate it here.
+          if (window.jQuery && window.jQuery.validator && !window.jQuery(apptForm).valid()) return;
+          if (!apptForm.reportValidity()) return;
+          bookingInProgress = true;
+          if (bookButton) bookButton.disabled = true;
 
           // 1. Show the booking loader overlay
           if (bookLoader) {
@@ -844,6 +861,11 @@
               console.error('Web3Forms Error:', error);
               if (bookLoader) bookLoader.style.display = 'none';
               alert('Something went wrong sending your appointment request. Please try again.');
+            })
+            .finally(() => {
+              bookingInProgress = false;
+              if (bookButton) bookButton.disabled = false;
+              if (bookLoader) bookLoader.style.display = 'none';
             });
         });
       }
@@ -852,7 +874,7 @@
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.20.0/dist/jquery.validate.min.js"></script>
-  <script src="app.js?v=5"></script>
+  <script src="app.js?v=6"></script>
 </body>
 
 </html>
